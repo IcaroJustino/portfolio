@@ -1,0 +1,49 @@
+.about {
+    padding-top: 5rem;
+    padding-left: 1rem;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.devinfo {
+    background-color: rgb(204, 204, 216);
+    border-radius: 2rem;
+    padding: 3rem;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+    margin: 0 5rem 15px 0;
+}
+
+.usertext>h1 {
+    margin-bottom: 10px;
+}
+
+.devinfo>* {
+    padding: 0 0 1rem 0;
+}
+
+.devinfo>.links {
+    display: flex;
+    justify-content: start;
+}
+
+.links>* {
+    margin-right: 10px;
+    margin-top: 1rem;
+}
+
+#devpicture {
+    background-color: pink;
+    height: fit-content;
+    width: 15rem;
+    display: flex;
+    height: 13rem;
+    padding: 2rem;
+    margin: auto 0 15px 0;
+}
