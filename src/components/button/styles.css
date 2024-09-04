@@ -1,0 +1,33 @@
+.social-button {
+    display: flex;
+    flex-direction: row;
+    width: 8rem;
+    justify-content: center;
+    padding: 0.3rem;
+    border-radius: 8px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 5px 0 rgba(88, 81, 81, 0.2);
+    text-decoration: none;
+    color: black;
+}
+
+.social-button:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.social-button>span {
+    margin: auto;
+    margin-right: 0.1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.social-button>svg {
+    width: 30px;
+    padding: 0.1rem;
+}
+
+.github {
+    /* background-color: palegoldenrod; */
+}

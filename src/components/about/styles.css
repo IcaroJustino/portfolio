@@ -11,7 +11,7 @@
 .devinfo {
     background-color: rgb(204, 204, 216);
     border-radius: 2rem;
-    padding: 3rem;
+    padding: 2rem;
     margin: 10px 0;
     display: flex;
     flex-direction: column;
@@ -19,6 +19,21 @@
     width: 30%;
     margin: 0 5rem 15px 0;
 }
+
+.devinfo>.usertext {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+}
+
+.devinfo .usertext>p {
+    text-overflow: ellipsis;
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
 
 .usertext>h1 {
     margin-bottom: 10px;
@@ -35,15 +50,12 @@
 
 .links>* {
     margin-right: 10px;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 #devpicture {
-    background-color: pink;
-    height: fit-content;
     width: 15rem;
-    display: flex;
     height: 13rem;
     padding: 2rem;
-    margin: auto 0 15px 0;
+    margin: auto 0;
 }
