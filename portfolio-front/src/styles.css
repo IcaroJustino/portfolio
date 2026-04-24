@@ -1,0 +1,61 @@
+/* Tailwind v4 entry point */
+@import "tailwindcss";
+
+:root {
+	--bg-dark: #00040a;
+	--bg: #000c14;
+	--bg-light: #001824;
+	--text: #d1f0ff;
+	--text-muted: #67bfe4;
+	--highlight: #006a8a;
+	--border: #003f52;
+	--border-muted: #002533;
+	--primary: #67bfe4;
+	--secondary: #e59d76;
+	--danger: #d6887a;
+	--warning: #ac9f53;
+	--success: #62b288;
+	--info: #799fdc;
+	--font-sans: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+body.light {
+	--bg-dark: #c2ebff;
+	--bg: #e0f5ff;
+	--bg-light: #fafdff;
+	--text: #000c19;
+	--text-muted: #003f52;
+	--highlight: #ebf9ff;
+	--border: #308cb0;
+	--border-muted: #53aad0;
+	--primary: #003f52;
+	--secondary: #71330a;
+	--danger: #964c40;
+	--warning: #6f620b;
+	--success: #1f7550;
+	--info: #40639c;
+}
+
+@theme {
+	--color-bg-dark: var(--bg-dark);
+	--color-bg: var(--bg);
+	--color-bg-light: var(--bg-light);
+	--color-text: var(--text);
+	--color-text-muted: var(--text-muted);
+	--color-highlight: var(--highlight);
+	--color-border: var(--border);
+	--color-border-muted: var(--border-muted);
+	--color-primary: var(--primary);
+	--color-secondary: var(--secondary);
+	--color-danger: var(--danger);
+	--color-warning: var(--warning);
+	--color-success: var(--success);
+	--color-info: var(--info);
+	--font-sans: var(--font-sans);
+}
+
+body {
+	background-color: var(--bg);
+	color: var(--text);
+	font-family: var(--font-sans);
+}

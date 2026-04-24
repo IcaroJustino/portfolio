@@ -1,0 +1,21 @@
+<app-page>
+  <section class="flex min-h-[60vh] flex-col items-start justify-center">
+    <p class="text-text-muted">404</p>
+    <h1 class="mt-2 text-4xl font-semibold">Pagina nao encontrada</h1>
+    <p class="mt-4 text-text-muted">
+      A rota que voce tentou acessar nao existe. Use o botao abaixo para voltar.
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <button
+        class="rounded-md bg-primary px-4 py-2 text-bg"
+        type="button"
+        (click)="goBack()"
+      >
+        Voltar para a ultima pagina
+      </button>
+      <a class="rounded-md border border-border px-4 py-2" routerLink="/">
+        Ir para home
+      </a>
+    </div>
+  </section>
+</app-page>
