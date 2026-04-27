@@ -1,0 +1,89 @@
+<header class="sticky top-0 z-[2147483646] border-b border-border bg-gradient-to-r from-bg-dark via-bg to-bg-dark/70 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+    <a class="text-lg font-semibold tracking-wide text-text" href="#home">Portfolio</a>
+
+    <nav class="hidden items-center gap-6 text-sm font-medium text-text-muted md:flex">
+      <a
+        *ngFor="let item of navItems"
+        class="transition-colors hover:text-text"
+        [attr.href]="item.href"
+      >
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <button
+      class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-bg-light/60 text-text transition hover:bg-highlight md:hidden"
+      type="button"
+      aria-label="Open menu"
+      aria-controls="mobile-menu"
+      [attr.aria-expanded]="isMenuOpen"
+      (click)="toggleMenu()"
+    >
+      <svg
+        class="h-5 w-5"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="18" x2="20" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+</header>
+
+<div
+  class="fixed top-0 left-0 right-0 z-[2147483647] cursor-default bg-bg/95 transition-all duration-300 ease-out md:hidden"
+  [class.opacity-0]="!isMenuOpen"
+  [class.opacity-100]="isMenuOpen"
+  [class.-translate-y-full]="!isMenuOpen"
+  [class.translate-y-0]="isMenuOpen"
+  [class.pointer-events-none]="!isMenuOpen"
+>
+  <div class="flex flex-col">
+    <div class="flex items-center justify-end border-b border-border bg-bg/90 px-6 py-5 backdrop-blur">
+      <button
+        class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border text-text transition hover:bg-highlight ="
+        type="button"
+        aria-label="Close menu"
+        (click)="closeMenu()"
+      >
+        <svg
+          class="h-5 w-5"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+          <line x1="6" y1="18" x2="18" y2="6"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="overflow-y-auto px-6 py-6">
+      <div class="rounded-2xl border border-border bg-bg-light/70 p-4 shadow-2xl">
+        <nav class="flex flex-col gap-4 text-lg font-medium text-text">
+          <a
+            *ngFor="let item of navItems"
+            class="cursor-pointer rounded-lg px-2 py-1 transition-colors hover:text-primary"
+            [attr.href]="item.href"
+            (click)="closeMenu()"
+          >
+            {{ item.label }}
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

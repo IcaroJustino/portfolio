@@ -1,0 +1,65 @@
+<app-page>
+  <section class="py-5 " id="home">
+    <figure class="mx-auto mb-6 w-fit rounded-2xl border border-border bg-bg-light p-1 shadow-lg">
+      <img
+        [src]="profileImageUrl"
+        alt="Foto de perfil"
+        class="h-40 w-28 rounded-xl object-cover"
+      />
+    </figure>
+
+    <div class="text-4xl w-full my-4 text-center" id="HomeTitle flex-wrap">
+      <span class="text-white font-bold">
+        {{welcomeText}},
+      </span>
+      <span class="ml-2 bg-linear-to-r from-highlight to-purple-500 bg-clip-text font-bold text-transparent">
+        {{name}}
+      </span>
+    </div>
+    <div class="m-auto text-white font-semibold text-center my-6 text-lg w-full max-w-xl px-2 ">
+      {{description}}
+    </div>
+    <div class="flex lg:flex-row flex-col lg:m-auto lg:items-center justify-center gap-4 mt-12 text-center ">
+      <button>
+        <a
+          class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-border bg-highlight px-4 py-2 text-center text-sm font-medium text-text transition hover:bg-highlight/90 lg:w-48"
+          href="#projects"
+        >
+          Ver Projetos
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </button>
+      <button>
+        <a
+          class="inline-flex w-full items-center justify-center gap-2 rounded-md border border-border bg-highlight px-4 py-2 text-center text-sm font-medium text-text transition hover:bg-highlight/90 lg:w-48"
+          href="#contact"
+        >
+          Contato
+          <svg
+            class="h-4 w-4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </button>
+    </div>
+  </section>
+</app-page>

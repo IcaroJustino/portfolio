@@ -6,7 +6,7 @@ const { Resend } = require('resend');
 const app = express();
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Configuração do CORS para permitir requisições do seu front-end Angular
+
 app.use(cors());
 app.use(express.json());
 
