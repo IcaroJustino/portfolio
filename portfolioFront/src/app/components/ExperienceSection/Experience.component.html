@@ -1,0 +1,120 @@
+<section id="experience" class="relative isolate overflow-hidden bg-bg py-16 sm:py-20">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(103,191,228,0.06),transparent_30%),linear-gradient(180deg,rgba(0,12,20,1),rgba(0,4,10,1))]"></div>
+  <div class="mx-auto max-w-6xl px-4">
+    <header class="text-center">
+      <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ title }}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
+        {{ subtitle }}
+      </p>
+    </header>
+
+    <div class="relative mt-14">
+      <!-- Mobile spine on the left -->
+      <div class="pointer-events-none absolute left-6 top-0 h-full w-px bg-[linear-gradient(180deg,transparent,rgba(103,191,228,0.68),rgba(103,191,228,0.68),transparent)] lg:hidden"></div>
+
+      <!-- Desktop center line connecting all dots from top to bottom -->
+      <div class="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(103,191,228,0.68),rgba(103,191,228,0.68))] lg:block"></div>
+
+      <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_96px_minmax(0,1fr)] lg:gap-x-12 lg:gap-y-16">
+        <ng-container *ngFor="let experience of experiences; let index = index">
+          <article
+            class="relative mx-auto w-full max-w-lg rounded-3xl border border-border/80 bg-bg-light/55 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-6 lg:col-start-auto"
+            [ngClass]="index % 2 === 0 ? 'lg:col-start-1 lg:justify-self-end' : 'lg:col-start-3 lg:justify-self-start'"
+          >
+            <div class="absolute left-6 top-6 h-[calc(100%+2rem)] w-px bg-[linear-gradient(180deg,rgba(103,191,228,0.68),rgba(103,191,228,0.25),transparent)] lg:hidden"></div>
+            <div class="absolute left-[1.35rem] top-6 h-3 w-3 rounded-full border-2 border-bg-dark bg-primary shadow-[0_0_0_4px_rgba(103,191,228,0.12)] lg:hidden"></div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center rounded-full bg-primary/15 px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-[0.24em] text-primary ring-1 ring-inset ring-primary/20">
+                {{ experience.badge }}
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-full border border-border-muted bg-bg-dark/55 px-3 py-1 text-[0.7rem] text-text-muted">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
+                  <path d="M9 7a3 3 0 0 1 6 0"></path>
+                  <rect x="4" y="7" width="16" height="11" rx="2"></rect>
+                  <path d="M4 12h16"></path>
+                </svg>
+                role
+              </span>
+            </div>
+
+            <div class="mt-4 flex items-start gap-3 sm:gap-4">
+              <div class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border bg-bg-dark/70 text-primary sm:h-11 sm:w-11">
+                <svg *ngIf="experience.icon === 'lab'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
+                  <path d="M10 2v5.5l-5.5 8.5A3 3 0 0 0 7 20h10a3 3 0 0 0 2.5-4L14 7.5V2"></path>
+                  <path d="M8 2h8"></path>
+                  <path d="M9 12h6"></path>
+                </svg>
+                <svg *ngIf="experience.icon === 'shield'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
+                  <path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Z"></path>
+                  <path d="M9.5 12.5 11.2 14l3.3-4"></path>
+                </svg>
+                <svg *ngIf="experience.icon === 'code'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
+                  <path d="M8 17l-4-5 4-5"></path>
+                  <path d="M16 7l4 5-4 5"></path>
+                  <path d="M10 19l4-14"></path>
+                </svg>
+                <svg *ngIf="experience.icon === 'spark'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
+                  <path d="m13 2-1.5 6.5L7 10l4.5 1.5L13 18l1.5-6.5L19 10l-4.5-1.5L13 2Z"></path>
+                </svg>
+              </div>
+
+              <div class="min-w-0">
+                <h3 class="text-lg font-semibold leading-tight text-text sm:text-xl">{{ experience.title }}</h3>
+                <p class="mt-1 text-sm font-medium text-primary">{{ experience.company }}</p>
+                <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.72rem] text-text-muted sm:text-sm">
+                  <span class="inline-flex items-center gap-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
+                      <path d="M12 21s6-4.35 6-11a6 6 0 0 0-12 0c0 6.65 6 11 6 11z"></path>
+                      <circle cx="12" cy="10" r="2.5"></circle>
+                    </svg>
+                    {{ experience.location }}
+                  </span>
+                  <span class="inline-flex items-center gap-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
+                      <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+                      <path d="M8 3v4"></path>
+                      <path d="M16 3v4"></path>
+                      <path d="M3 11h18"></path>
+                    </svg>
+                    {{ experience.period }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm leading-relaxed text-text-muted sm:text-[0.95rem]">
+              {{ experience.summary }}
+            </p>
+
+            <div class="mt-5">
+              <h4 class="text-sm font-semibold text-text">Technologies:</h4>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span
+                  *ngFor="let tech of experience.technologies"
+                  class="rounded bg-bg-dark/60 px-2.5 py-1 text-[0.68rem] font-medium text-text-muted ring-1 ring-inset ring-border-muted"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <h4 class="text-sm font-semibold text-text">Key Achievements:</h4>
+              <ul class="mt-2 space-y-2 text-xs leading-relaxed text-text-muted sm:text-sm">
+                <li *ngFor="let achievement of experience.achievements" class="flex gap-2">
+                  <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"></span>
+                  <span>{{ achievement }}</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <div class="hidden lg:flex lg:col-start-2 lg:items-start lg:justify-center">
+            <div class="mt-10 h-3 w-3 rounded-full border-2 border-bg-dark bg-primary shadow-[0_0_0_8px_rgba(103,191,228,0.15)]"></div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

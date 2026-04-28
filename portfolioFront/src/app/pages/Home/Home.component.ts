@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { PageComponent } from '@components/Page/Page.component';
+import { AboutMeComponent } from '@components/AboutMeSection/Aboutme.component';
+import { ExperienceComponent } from '@components/ExperienceSection/Experience.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [PageComponent],
+  imports: [PageComponent, AboutMeComponent, ExperienceComponent],
   templateUrl: './Home.component.html',
 })
 export class HomeComponent {
