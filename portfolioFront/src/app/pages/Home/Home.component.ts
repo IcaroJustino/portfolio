@@ -4,6 +4,8 @@ import { AboutMeComponent } from '@components/AboutMeSection/Aboutme.component';
 import { ExperienceComponent } from '@components/ExperienceSection/Experience.component';
 import { LucideAngularModule } from 'lucide-angular';
 import { SkillsComponent } from '@components/SkillsSection/Skills.component';
+import { ContactComponent } from '@components/ContactSection/Contact.component';
+import { FooterComponent } from '@components/Footer/Footer.component';
 import { ResumeComponent } from '@components/ResumeSection/Resume.component';
 
 @Component({
@@ -15,6 +17,8 @@ import { ResumeComponent } from '@components/ResumeSection/Resume.component';
     ExperienceComponent,
     SkillsComponent,
     ResumeComponent,
+    ContactComponent,
+    FooterComponent,
     LucideAngularModule,
   ],
   templateUrl: './Home.component.html',
