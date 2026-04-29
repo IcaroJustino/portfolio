@@ -1,0 +1,43 @@
+<section id="projects" class="relative isolate overflow-hidden bg-bg py-16 sm:py-20">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(103,191,228,0.06),transparent_30%),linear-gradient(180deg,rgba(0,12,20,1),rgba(0,4,10,1))]"></div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <header class="text-center mb-16">
+      <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ title }}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
+        {{ subtitle }}
+      </p>
+    </header>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div *ngFor="let project of projects" class="flex flex-col overflow-hidden rounded-2xl border border-border/80 bg-bg-light/40 shadow-lg transition hover:bg-bg-light/60">
+        <div class="aspect-video w-full overflow-hidden bg-bg-dark/50 border-b border-border/80 flex items-center justify-center">
+          <img [src]="project.image" [alt]="project.title" class="h-full w-full object-cover" onerror="this.style.display='none'" />
+          <div class="absolute text-text-muted/30" style="z-index: -1;">
+            <lucide-icon name="code" class="w-12 h-12"></lucide-icon>
+          </div>
+        </div>
+        <div class="flex flex-1 flex-col p-6">
+          <h3 class="text-xl font-bold text-text">{{ project.title }}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-text-muted flex-1">{{ project.description }}</p>
+          
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span *ngFor="let tech of project.technologies" class="rounded bg-primary/20 px-2.5 py-1 text-[0.7rem] font-medium text-primary ring-1 ring-inset ring-primary/30">
+              {{ tech }}
+            </span>
+          </div>
+
+          <div class="mt-6 flex flex-wrap items-center gap-4 pt-4 border-t border-border/40">
+            <a [href]="project.githubUrl" class="inline-flex items-center gap-2 text-sm font-medium text-text-muted transition hover:text-text">
+              <lucide-icon name="github" class="h-4 w-4"></lucide-icon>
+              Code
+            </a>
+            <a [href]="project.demoUrl" class="inline-flex items-center gap-2 text-sm font-medium text-text-muted transition hover:text-text">
+              <lucide-icon name="external-link" class="h-4 w-4"></lucide-icon>
+              Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
