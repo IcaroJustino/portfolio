@@ -1,5 +1,32 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  HostListener,
+  NgZone,
+  OnDestroy,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
+
+type ExperienceSide = 'left' | 'right';
+
+interface ExperienceItem {
+  badge: string;
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  summary: string;
+  technologies: string[];
+  achievements: string[];
+  icon: 'lab' | 'shield' | 'code' | 'spark';
+}
+
+interface ExperienceWithSide extends ExperienceItem {
+  side: ExperienceSide;
+}
 
 @Component({
   selector: 'app-experience-section',
@@ -7,11 +34,11 @@ import { Component } from '@angular/core';
   imports: [CommonModule],
   templateUrl: './Experience.component.html',
 })
-export class ExperienceComponent {
+export class ExperienceComponent implements AfterViewInit, OnDestroy {
   readonly title = 'Experience';
   readonly subtitle = 'My professional journey and key experiences';
 
-  readonly experiences = [
+  private readonly baseExperiences: ExperienceItem[] = [
     {
       badge: 'internship',
       title: 'Machine Learning Research Intern',
@@ -72,4 +99,88 @@ export class ExperienceComponent {
       icon: 'spark',
     },
   ];
+
+  readonly experiences: ExperienceWithSide[] = this.baseExperiences.map((experience, index) => ({
+    ...experience,
+    side: index % 2 === 0 ? 'left' : 'right',
+  }));
+
+  @ViewChildren('experienceCard', { read: ElementRef })
+  private readonly cards?: QueryList<ElementRef<HTMLElement>>;
+
+  private observer?: IntersectionObserver;
+  private lastScrollY = 0;
+
+  scrollDirection: 'up' | 'down' = 'down';
+  cardInView: boolean[] = this.experiences.map(() => false);
+
+  constructor(private readonly zone: NgZone) {}
+
+  ngAfterViewInit(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    if (!this.cards) {
+      return;
+    }
+
+    this.lastScrollY = window.scrollY;
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        this.zone.run(() => {
+          entries.forEach((entry) => {
+            const indexValue = (entry.target as HTMLElement).dataset['index'];
+            if (indexValue === undefined) {
+              return;
+            }
+
+            const index = Number(indexValue);
+            if (Number.isNaN(index)) {
+              return;
+            }
+
+            this.cardInView[index] = entry.isIntersecting;
+          });
+        });
+      },
+      {
+        threshold: 0.2,
+      },
+    );
+
+    this.cards.forEach((card) => {
+      this.observer?.observe(card.nativeElement);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
+  }
+
+  @HostListener('window:scroll')
+  onScroll(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const currentY = window.scrollY;
+    this.scrollDirection = currentY >= this.lastScrollY ? 'down' : 'up';
+    this.lastScrollY = currentY;
+  }
+
+  getCardClass(index: number, side: ExperienceSide): string {
+    const sideClass =
+      side === 'left'
+        ? 'lg:col-start-1 lg:justify-self-end'
+        : 'lg:col-start-3 lg:justify-self-start';
+
+    const hiddenClass = side === 'left' ? 'lg:-translate-x-12' : 'lg:translate-x-12';
+    const isVisible = this.scrollDirection === 'down' && this.cardInView[index];
+    const motionClass = isVisible
+      ? 'lg:translate-x-0 lg:opacity-100'
+      : `${hiddenClass} lg:opacity-0`;
+
+    return `${sideClass} ${motionClass}`;
+  }
 }

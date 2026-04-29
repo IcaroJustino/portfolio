@@ -1,6 +1,6 @@
 <section id="experience" class="relative isolate overflow-hidden bg-bg py-16 sm:py-20">
   <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(103,191,228,0.06),transparent_30%),linear-gradient(180deg,rgba(0,12,20,1),rgba(0,4,10,1))]"></div>
-  <div class="mx-auto max-w-6xl px-4">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
     <header class="text-center">
       <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ title }}</h2>
       <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
@@ -15,15 +15,15 @@
       <!-- Desktop center line connecting all dots from top to bottom -->
       <div class="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(103,191,228,0.68),rgba(103,191,228,0.68))] lg:block"></div>
 
-      <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_96px_minmax(0,1fr)] lg:gap-x-12 lg:gap-y-16">
+      <div class="space-y-12 lg:space-y-16">
         <ng-container *ngFor="let experience of experiences; let index = index">
-          <article
-            class="relative mx-auto w-full max-w-lg rounded-3xl border border-border/80 bg-bg-light/55 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-6 lg:col-start-auto"
-            [ngClass]="index % 2 === 0 ? 'lg:col-start-1 lg:justify-self-end' : 'lg:col-start-3 lg:justify-self-start'"
-          >
-            <div class="absolute left-6 top-6 h-[calc(100%+2rem)] w-px bg-[linear-gradient(180deg,rgba(103,191,228,0.68),rgba(103,191,228,0.25),transparent)] lg:hidden"></div>
-            <div class="absolute left-[1.35rem] top-6 h-3 w-3 rounded-full border-2 border-bg-dark bg-primary shadow-[0_0_0_4px_rgba(103,191,228,0.12)] lg:hidden"></div>
-
+          <div class="relative grid gap-6 pl-20 sm:pl-24 lg:grid-cols-[minmax(0,1fr)_96px_minmax(0,1fr)] lg:items-start lg:gap-x-12 lg:pl-0">
+            <article
+              #experienceCard
+              [attr.data-index]="index"
+              class="relative mx-auto w-full max-w-lg rounded-3xl border border-border/80 bg-bg-light/55 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-6 lg:row-start-1 lg:pl-6 lg:transition lg:duration-700 lg:ease-out lg:will-change-transform"
+              [ngClass]="getCardClass(index, experience.side)"
+            >
             <div class="flex flex-wrap items-center gap-2">
               <span class="inline-flex items-center rounded-full bg-primary/15 px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-[0.24em] text-primary ring-1 ring-inset ring-primary/20">
                 {{ experience.badge }}
@@ -108,10 +108,9 @@
                 </li>
               </ul>
             </div>
-          </article>
+            </article>
 
-          <div class="hidden lg:flex lg:col-start-2 lg:items-start lg:justify-center">
-            <div class="mt-10 h-3 w-3 rounded-full border-2 border-bg-dark bg-primary shadow-[0_0_0_8px_rgba(103,191,228,0.15)]"></div>
+            <div class="absolute left-6 top-6 h-3 w-3 rounded-full border-2 border-bg-dark bg-primary shadow-[0_0_0_8px_rgba(103,191,228,0.15)] lg:static lg:col-start-2 lg:row-start-1 lg:mt-0 lg:self-start lg:justify-self-center"></div>
           </div>
         </ng-container>
       </div>
