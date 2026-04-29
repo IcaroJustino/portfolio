@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './Header.component.html',
 })
 export class HeaderComponent {
@@ -22,19 +23,9 @@ export class HeaderComponent {
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
-    this.toggleBodyScroll(this.isMenuOpen);
   }
 
   closeMenu(): void {
     this.isMenuOpen = false;
-    this.toggleBodyScroll(false);
-  }
-
-  private toggleBodyScroll(lock: boolean) {
-    if (lock) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
   }
 }

@@ -1,0 +1,92 @@
+<section id="experience" class="relative isolate overflow-hidden bg-bg py-16 sm:py-20">
+  <div class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,rgba(103,191,228,0.06),transparent_30%),linear-gradient(180deg,rgba(0,12,20,1),rgba(0,4,10,1))]"></div>
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
+    <header class="text-center">
+      <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ title }}</h2>
+      <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
+        {{ subtitle }}
+      </p>
+    </header>
+
+    <div class="relative mt-14">
+      <!-- Mobile spine on the left -->
+      <div class="pointer-events-none absolute left-6 top-0 h-full w-px bg-[linear-gradient(180deg,transparent,rgba(103,191,228,0.68),rgba(103,191,228,0.68),transparent)] lg:hidden"></div>
+
+      <!-- Desktop center line connecting all dots from top to bottom -->
+      <div class="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(103,191,228,0.68),rgba(103,191,228,0.68))] lg:block"></div>
+
+      <div class="space-y-12 lg:space-y-16">
+        <ng-container *ngFor="let experience of experiences">
+          <div class="relative grid gap-6 pl-20 sm:pl-24 lg:grid-cols-[minmax(0,1fr)_96px_minmax(0,1fr)] lg:items-start lg:gap-x-12 lg:pl-0">
+            <article
+              class="relative mx-auto w-full max-w-lg rounded-3xl border border-border/80 bg-bg-light/55 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-6 lg:row-start-1 lg:pl-6"
+              [ngClass]="experience.side === 'left' ? 'lg:col-start-1 lg:justify-self-end' : 'lg:col-start-3 lg:justify-self-start'"
+            >
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center rounded-full bg-primary/15 px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-[0.24em] text-primary ring-1 ring-inset ring-primary/20">
+                {{ experience.badge }}
+              </span>
+              <span class="inline-flex items-center gap-1 rounded-full border border-border-muted bg-bg-dark/55 px-3 py-1 text-[0.7rem] text-text-muted">
+                <lucide-icon name="briefcase" class="h-3.5 w-3.5" aria-hidden="true"></lucide-icon>
+                role
+              </span>
+            </div>
+
+            <div class="mt-4 flex items-start gap-3 sm:gap-4">
+              <div class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border bg-bg-dark/70 text-primary sm:h-11 sm:w-11">
+                <lucide-icon *ngIf="experience.icon === 'lab'" name="flask-conical" class="h-5 w-5" aria-hidden="true"></lucide-icon>
+                <lucide-icon *ngIf="experience.icon === 'shield'" name="shield" class="h-5 w-5" aria-hidden="true"></lucide-icon>
+                <lucide-icon *ngIf="experience.icon === 'code'" name="code" class="h-5 w-5" aria-hidden="true"></lucide-icon>
+                <lucide-icon *ngIf="experience.icon === 'spark'" name="sparkles" class="h-5 w-5" aria-hidden="true"></lucide-icon>
+              </div>
+
+              <div class="min-w-0">
+                <h3 class="text-lg font-semibold leading-tight text-text sm:text-xl">{{ experience.title }}</h3>
+                <p class="mt-1 text-sm font-medium text-primary">{{ experience.company }}</p>
+                <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.72rem] text-text-muted sm:text-sm">
+                  <span class="inline-flex items-center gap-1">
+                    <lucide-icon name="map-pin" class="h-3.5 w-3.5" aria-hidden="true"></lucide-icon>
+                    {{ experience.location }}
+                  </span>
+                  <span class="inline-flex items-center gap-1">
+                    <lucide-icon name="calendar" class="h-3.5 w-3.5" aria-hidden="true"></lucide-icon>
+                    {{ experience.period }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-4 text-sm leading-relaxed text-text-muted sm:text-[0.95rem]">
+              {{ experience.summary }}
+            </p>
+
+            <div class="mt-5">
+              <h4 class="text-sm font-semibold text-text">Technologies:</h4>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span
+                  *ngFor="let tech of experience.technologies"
+                  class="rounded bg-bg-dark/60 px-2.5 py-1 text-[0.68rem] font-medium text-text-muted ring-1 ring-inset ring-border-muted"
+                >
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+
+            <div class="mt-5">
+              <h4 class="text-sm font-semibold text-text">Key Achievements:</h4>
+              <ul class="mt-2 space-y-2 text-xs leading-relaxed text-text-muted sm:text-sm">
+                <li *ngFor="let achievement of experience.achievements" class="flex gap-2">
+                  <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary"></span>
+                  <span>{{ achievement }}</span>
+                </li>
+              </ul>
+            </div>
+            </article>
+
+            <div class="absolute left-6 top-6 h-3 w-3 rounded-full border-2 border-bg-dark bg-primary shadow-[0_0_0_8px_rgba(103,191,228,0.15)] lg:static lg:col-start-2 lg:row-start-1 lg:mt-0 lg:self-start lg:justify-self-center"></div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

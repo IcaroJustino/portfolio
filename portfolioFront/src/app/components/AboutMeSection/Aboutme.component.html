@@ -1,5 +1,63 @@
-<section class="">
+<section
+	id="about"
+	class="bg-bg py-16 sm:py-20"
+>
+	<div class="mx-auto max-w-6xl px-4">
+		<div class="rounded-3xl border border-border bg-bg-dark/70 p-6 shadow-2xl sm:p-10">
+			<header class="text-center">
+				<h2 class="text-3xl font-semibold tracking-wide sm:text-4xl">About Me</h2>
+				<p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
+					{{ aboutmeText }}
+				</p>
+			</header>
 
+			<div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:items-start">
+				<div class="overflow-hidden rounded-2xl border border-border bg-bg-light shadow-xl">
+					<img
+						[src]="profileImageUrl"
+						[alt]="profileImageAlt"
+						class="aspect-3/4 w-full  object-cover"
+						loading="lazy"
+					/>
+				</div>
 
+				<div class="grid gap-6">
+					<div class="rounded-2xl border border-border-muted bg-bg-light/60 p-5">
+						<h3 class="text-lg font-semibold">My Journey</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-muted sm:text-base">
+							{{ myJourneyText }}
+						</p>
+					</div>
 
+					<div class="rounded-2xl border border-border-muted bg-bg-light/60 p-5">
+						<h3 class="text-lg font-semibold">My Approach</h3>
+						<p class="mt-3 text-sm leading-relaxed text-text-muted sm:text-base">
+							{{ aboutmeText }}
+						</p>
+					</div>
+
+					<div class="grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-3">
+						<div
+							class="flex aspect-square w-full flex-col items-center overflow-hidden rounded-2xl border border-border bg-bg-dark/60 p-2.5 text-center sm:p-4"
+							*ngFor="let card of titleCards"
+						>
+							<div
+								class="grid h-8 w-8 place-items-center rounded-full border border-border bg-bg-light/10 text-primary sm:h-11 sm:w-11"
+								aria-hidden="true"
+							>
+								<ng-container [ngSwitch]="card.icon">
+									<lucide-icon *ngSwitchCase="'medal'" name="medal" class="h-4 w-4 sm:h-5 sm:w-5"></lucide-icon>
+									<lucide-icon *ngSwitchCase="'briefcase'" name="briefcase" class="h-4 w-4 sm:h-5 sm:w-5"></lucide-icon>
+									<lucide-icon *ngSwitchCase="'code'" name="code" class="h-4 w-4 sm:h-5 sm:w-5"></lucide-icon>
+									<lucide-icon *ngSwitchDefault name="circle-dot" class="h-4 w-4 sm:h-5 sm:w-5"></lucide-icon>
+								</ng-container>
+							</div>
+							<div class="mt-3 text-sm font-semibold leading-none text-text sm:mt-4">{{ card.count }}</div>
+							<div class="mt-1 line-clamp-4 text-[0.62rem] leading-snug text-text-muted sm:mt-2 sm:text-xs">{{ card.description }}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
