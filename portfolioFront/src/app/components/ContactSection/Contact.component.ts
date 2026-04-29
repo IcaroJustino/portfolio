@@ -57,7 +57,7 @@ export class ContactComponent implements OnInit {
     this.hideToast();
 
     try {
-      const response = await fetch('http://localhost:3000/api/send-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,5 +1,13 @@
 {
-  "dependencies": {
-    "lucide-angular": "^1.0.0"
+  "name": "portfolio-root",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npm run start:api\" \"npm run start:front\"",
+    "start:api": "cd portfolioApi && node server.js",
+    "start:front": "cd portfolioFront && npm start",
+    "install:all": "cd portfolioApi && npm install && cd ../portfolioFront && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
