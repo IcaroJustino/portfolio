@@ -4,6 +4,7 @@ import { AboutMeComponent } from '@components/AboutMeSection/Aboutme.component';
 import { ExperienceComponent } from '@components/ExperienceSection/Experience.component';
 import { LucideAngularModule } from 'lucide-angular';
 import { SkillsComponent } from '@components/SkillsSection/Skills.component';
+import { ResumeComponent } from '@components/ResumeSection/Resume.component';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { SkillsComponent } from '@components/SkillsSection/Skills.component';
     AboutMeComponent,
     ExperienceComponent,
     SkillsComponent,
+    ResumeComponent,
     LucideAngularModule,
   ],
   templateUrl: './Home.component.html',
