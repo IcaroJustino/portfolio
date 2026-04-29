@@ -2,11 +2,19 @@ import { Component } from '@angular/core';
 import { PageComponent } from '@components/Page/Page.component';
 import { AboutMeComponent } from '@components/AboutMeSection/Aboutme.component';
 import { ExperienceComponent } from '@components/ExperienceSection/Experience.component';
+import { LucideAngularModule } from 'lucide-angular';
+import { SkillsComponent } from '@components/SkillsSection/Skills.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [PageComponent, AboutMeComponent, ExperienceComponent],
+  imports: [
+    PageComponent,
+    AboutMeComponent,
+    ExperienceComponent,
+    SkillsComponent,
+    LucideAngularModule,
+  ],
   templateUrl: './Home.component.html',
 })
 export class HomeComponent {

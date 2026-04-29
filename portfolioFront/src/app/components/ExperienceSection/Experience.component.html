@@ -16,47 +16,28 @@
       <div class="pointer-events-none absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(103,191,228,0.68),rgba(103,191,228,0.68))] lg:block"></div>
 
       <div class="space-y-12 lg:space-y-16">
-        <ng-container *ngFor="let experience of experiences; let index = index">
+        <ng-container *ngFor="let experience of experiences">
           <div class="relative grid gap-6 pl-20 sm:pl-24 lg:grid-cols-[minmax(0,1fr)_96px_minmax(0,1fr)] lg:items-start lg:gap-x-12 lg:pl-0">
             <article
-              #experienceCard
-              [attr.data-index]="index"
-              class="relative mx-auto w-full max-w-lg rounded-3xl border border-border/80 bg-bg-light/55 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-6 lg:row-start-1 lg:pl-6 lg:transition lg:duration-700 lg:ease-out lg:will-change-transform"
-              [ngClass]="getCardClass(index, experience.side)"
+              class="relative mx-auto w-full max-w-lg rounded-3xl border border-border/80 bg-bg-light/55 p-5 shadow-[0_18px_40px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-6 lg:row-start-1 lg:pl-6"
+              [ngClass]="experience.side === 'left' ? 'lg:col-start-1 lg:justify-self-end' : 'lg:col-start-3 lg:justify-self-start'"
             >
             <div class="flex flex-wrap items-center gap-2">
               <span class="inline-flex items-center rounded-full bg-primary/15 px-2.5 py-1 text-[0.65rem] font-medium uppercase tracking-[0.24em] text-primary ring-1 ring-inset ring-primary/20">
                 {{ experience.badge }}
               </span>
               <span class="inline-flex items-center gap-1 rounded-full border border-border-muted bg-bg-dark/55 px-3 py-1 text-[0.7rem] text-text-muted">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
-                  <path d="M9 7a3 3 0 0 1 6 0"></path>
-                  <rect x="4" y="7" width="16" height="11" rx="2"></rect>
-                  <path d="M4 12h16"></path>
-                </svg>
+                <lucide-icon name="briefcase" class="h-3.5 w-3.5" aria-hidden="true"></lucide-icon>
                 role
               </span>
             </div>
 
             <div class="mt-4 flex items-start gap-3 sm:gap-4">
               <div class="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border bg-bg-dark/70 text-primary sm:h-11 sm:w-11">
-                <svg *ngIf="experience.icon === 'lab'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
-                  <path d="M10 2v5.5l-5.5 8.5A3 3 0 0 0 7 20h10a3 3 0 0 0 2.5-4L14 7.5V2"></path>
-                  <path d="M8 2h8"></path>
-                  <path d="M9 12h6"></path>
-                </svg>
-                <svg *ngIf="experience.icon === 'shield'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
-                  <path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Z"></path>
-                  <path d="M9.5 12.5 11.2 14l3.3-4"></path>
-                </svg>
-                <svg *ngIf="experience.icon === 'code'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
-                  <path d="M8 17l-4-5 4-5"></path>
-                  <path d="M16 7l4 5-4 5"></path>
-                  <path d="M10 19l4-14"></path>
-                </svg>
-                <svg *ngIf="experience.icon === 'spark'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true">
-                  <path d="m13 2-1.5 6.5L7 10l4.5 1.5L13 18l1.5-6.5L19 10l-4.5-1.5L13 2Z"></path>
-                </svg>
+                <lucide-icon *ngIf="experience.icon === 'lab'" name="flask-conical" class="h-5 w-5" aria-hidden="true"></lucide-icon>
+                <lucide-icon *ngIf="experience.icon === 'shield'" name="shield" class="h-5 w-5" aria-hidden="true"></lucide-icon>
+                <lucide-icon *ngIf="experience.icon === 'code'" name="code" class="h-5 w-5" aria-hidden="true"></lucide-icon>
+                <lucide-icon *ngIf="experience.icon === 'spark'" name="sparkles" class="h-5 w-5" aria-hidden="true"></lucide-icon>
               </div>
 
               <div class="min-w-0">
@@ -64,19 +45,11 @@
                 <p class="mt-1 text-sm font-medium text-primary">{{ experience.company }}</p>
                 <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.72rem] text-text-muted sm:text-sm">
                   <span class="inline-flex items-center gap-1">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
-                      <path d="M12 21s6-4.35 6-11a6 6 0 0 0-12 0c0 6.65 6 11 6 11z"></path>
-                      <circle cx="12" cy="10" r="2.5"></circle>
-                    </svg>
+                    <lucide-icon name="map-pin" class="h-3.5 w-3.5" aria-hidden="true"></lucide-icon>
                     {{ experience.location }}
                   </span>
                   <span class="inline-flex items-center gap-1">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5" aria-hidden="true">
-                      <rect x="3" y="5" width="18" height="16" rx="2"></rect>
-                      <path d="M8 3v4"></path>
-                      <path d="M16 3v4"></path>
-                      <path d="M3 11h18"></path>
-                    </svg>
+                    <lucide-icon name="calendar" class="h-3.5 w-3.5" aria-hidden="true"></lucide-icon>
                     {{ experience.period }}
                   </span>
                 </div>
