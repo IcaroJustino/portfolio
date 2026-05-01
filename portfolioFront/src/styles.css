@@ -19,21 +19,35 @@
 	--font-sans: "Space Grotesk", "Segoe UI", sans-serif;
 }
 
-body.light {
-	--bg-dark: #c2ebff;
-	--bg: #e0f5ff;
-	--bg-light: #fafdff;
-	--text: #000c19;
-	--text-muted: #003f52;
-	--highlight: #ebf9ff;
-	--border: #308cb0;
-	--border-muted: #53aad0;
-	--primary: #003f52;
-	--secondary: #71330a;
-	--danger: #964c40;
-	--warning: #6f620b;
-	--success: #1f7550;
-	--info: #40639c;
+:root.light {
+	--bg-dark: #cbd5e1;
+	--bg: #e2e8f0;
+	--bg-light: #f1f5f9;
+	--text: #0f172a;
+	--text-muted: #334155;
+	--highlight: #ffffff;
+	--border: #94a3b8;
+	--border-muted: #cbd5e1;
+	--primary: #0284c7;
+	--secondary: #ea580c;
+	--danger: #e11d48;
+	--warning: #ca8a04;
+	--success: #16a34a;
+	--info: #2563eb;
+}
+
+.name-gradient {
+	background-image: linear-gradient(to right, var(--highlight), var(--secondary));
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+:root.light .name-gradient {
+	background-image: none;
+	-webkit-background-clip: initial;
+	background-clip: initial;
+	color: black;
 }
 
 @theme {
