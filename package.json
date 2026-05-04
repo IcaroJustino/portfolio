@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"npm run start:api\" \"npm run start:front\"",
-    "start:api": "cd portfolioApi && node server.js",
+    "start:api": "cd api && node server.js",
     "start:front": "cd portfolioFront && npm start",
-    "install:all": "cd portfolioApi && npm install && cd ../portfolioFront && npm install"
+    "install:all": "cd api && npm install && cd ../portfolioFront && npm install",
+    "postinstall": "npm run install:all",
+    "build": "cd portfolioFront && npm run build"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
