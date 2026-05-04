@@ -6,24 +6,24 @@
       <div>
         <h3 class="text-xl font-bold text-text mb-4">Icaro Justino</h3>
         <p class="text-sm leading-relaxed text-text-muted max-w-sm">
-          Full-stack developer passionate about creating amazing web experiences and exploring software architecture.
+          {{ texts().description }}
         </p>
       </div>
 
       <!-- Column 2: Quick Links -->
       <div>
-        <h3 class="text-sm font-bold text-text mb-4 uppercase tracking-wider">Quick Links</h3>
+        <h3 class="text-sm font-bold text-text mb-4 uppercase tracking-wider">{{ texts().quickLinks }}</h3>
         <ul class="space-y-3">
           <li><a href="#home" class="text-sm text-text-muted hover:text-primary transition">Home</a></li>
-          <li><a href="#about" class="text-sm text-text-muted hover:text-primary transition">About</a></li>
-          <li><a href="#projects" class="text-sm text-text-muted hover:text-primary transition">Projects</a></li>
-          <li><a href="#contact" class="text-sm text-text-muted hover:text-primary transition">Contact</a></li>
+          <li><a href="#about" class="text-sm text-text-muted hover:text-primary transition">{{ navItems().about }}</a></li>
+          <li><a href="#projects" class="text-sm text-text-muted hover:text-primary transition">{{ navItems().projects }}</a></li>
+          <li><a href="#contact" class="text-sm text-text-muted hover:text-primary transition">{{ navItems().contact }}</a></li>
         </ul>
       </div>
 
       <!-- Column 3: Connect -->
       <div>
-        <h3 class="text-sm font-bold text-text mb-4 uppercase tracking-wider">Connect</h3>
+        <h3 class="text-sm font-bold text-text mb-4 uppercase tracking-wider">{{ texts().connect }}</h3>
         <div class="flex gap-4">
           <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank" class="text-text-muted hover:text-primary transition">
             <lucide-icon [name]="link.icon" class="h-5 w-5"></lucide-icon>
@@ -37,10 +37,10 @@
     <!-- Bottom bar -->
     <div class="mt-12 pt-8 border-t border-border/40 flex flex-col items-center justify-between gap-2 sm:flex-row">
       <p class="text-xs text-text-muted">
-        &copy; {{ currentYear }} Icaro Justino. All rights reserved.
+        {{ texts().copyright }}
       </p>
       <p class="text-xs text-text-muted">
-        Construído com Angular
+        {{ texts().builtWith }}
       </p>
     </div>
   </div>

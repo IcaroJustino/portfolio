@@ -9,9 +9,9 @@
 			<div class="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl border border-border/40 bg-bg-light/20 shadow-lg">
 				<span class="text-3xl font-bold bg-linear-to-r from-primary to-info bg-clip-text text-transparent select-none">IJ</span>
 			</div>
-			<h2 class="text-3xl font-semibold tracking-wide sm:text-4xl">About Me</h2>
+			<h2 class="text-3xl font-semibold tracking-wide sm:text-4xl">{{ texts().title }}</h2>
 			<p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
-				{{ aboutmeText }}
+				{{ texts().aboutmeText }}
 			</p>
 		</header>
 
@@ -24,10 +24,10 @@
 					<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-inset ring-primary/25">
 						<lucide-icon name="compass" class="h-5 w-5"></lucide-icon>
 					</div>
-					<h3 class="text-lg font-semibold text-text">My Journey</h3>
+					<h3 class="text-lg font-semibold text-text">{{ texts().journeyTitle }}</h3>
 				</div>
 				<p class="text-sm leading-relaxed text-text-muted sm:text-base">
-					{{ myJourneyText }}
+					{{ texts().myJourneyText }}
 				</p>
 			</div>
 
@@ -37,10 +37,10 @@
 					<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-info/15 text-info ring-1 ring-inset ring-info/25">
 						<lucide-icon name="lightbulb" class="h-5 w-5"></lucide-icon>
 					</div>
-					<h3 class="text-lg font-semibold text-text">My Approach</h3>
+					<h3 class="text-lg font-semibold text-text">{{ texts().approachTitle }}</h3>
 				</div>
 				<p class="text-sm leading-relaxed text-text-muted sm:text-base">
-					{{ myApproachText }}
+					{{ texts().myApproachText }}
 				</p>
 			</div>
 
@@ -63,7 +63,7 @@
 					</ng-container>
 				</div>
 				<div class="mt-3 text-2xl font-bold text-text sm:text-3xl">{{ card.displayCount }}</div>
-				<div class="mt-1 text-xs text-text-muted sm:text-sm">{{ card.description }}</div>
+				<div class="mt-1 text-xs text-text-muted sm:text-sm">{{ texts().stats[card.descriptionKey] }}</div>
 			</div>
 		</div>
 

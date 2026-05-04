@@ -5,7 +5,7 @@
     <div class="flex items-center gap-6">
       <nav class="hidden items-center gap-6 text-sm font-medium text-text-muted md:flex">
         <a
-          *ngFor="let item of navItems"
+          *ngFor="let item of navItems()"
           class="transition-colors hover:text-text"
           [attr.href]="item.href"
         >
@@ -14,6 +14,15 @@
       </nav>
 
       <div class="flex items-center gap-3">
+        <button
+          class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-bg-light/60 text-sm font-bold text-text transition hover:bg-highlight"
+          type="button"
+          aria-label="Toggle language"
+          (click)="toggleLanguage()"
+        >
+          {{ languageService.currentLang() === 'eng-us' ? 'EN' : 'PT' }}
+        </button>
+
         <button
           class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-border bg-bg-light/60 text-text transition hover:bg-highlight"
           type="button"
@@ -63,7 +72,7 @@
       <div class="rounded-2xl border border-border bg-bg-light/70 p-4 shadow-2xl">
         <nav class="flex flex-col gap-4 text-lg font-medium text-text">
           <a
-            *ngFor="let item of navItems"
+            *ngFor="let item of navItems()"
             class="cursor-pointer rounded-lg px-2 py-1 transition-colors hover:text-primary"
             [attr.href]="item.href"
             (click)="closeMenu()"

@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { LucideAngularModule } from 'lucide-angular';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-resume-section',
@@ -10,17 +11,16 @@ import { LucideAngularModule } from 'lucide-angular';
   templateUrl: './Resume.component.html',
 })
 export class ResumeComponent {
-  readonly title = 'Resume';
-  readonly subtitle = 'Download or view my resume to learn more about my experience and qualifications';
-  
-  readonly resumeUrlPath = 'assets/IcaroMirandaResumePTBR.pdf';
-  readonly safeResumeUrl: SafeResourceUrl;
-  
-  showPreview = true;
+  languageService = inject(LanguageService);
+  private sanitizer = inject(DomSanitizer);
 
-  constructor(private sanitizer: DomSanitizer) {
-    this.safeResumeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.resumeUrlPath);
-  }
+  texts = computed(() => this.languageService.t().resume);
+
+  safeResumeUrl = computed<SafeResourceUrl>(() => {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(this.texts().pdfFile);
+  });
+
+  showPreview = true;
 
   togglePreview(): void {
     this.showPreview = !this.showPreview;

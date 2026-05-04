@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +10,11 @@ import { LucideAngularModule } from 'lucide-angular';
   templateUrl: './Footer.component.html',
 })
 export class FooterComponent {
+  languageService = inject(LanguageService);
+  
+  texts = computed(() => this.languageService.t().footer);
+  navItems = computed(() => this.languageService.t().header);
+
   currentYear = new Date().getFullYear();
   
   socialLinks = [

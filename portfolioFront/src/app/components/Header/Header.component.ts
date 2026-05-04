@@ -1,7 +1,7 @@
 import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Component, Inject, PLATFORM_ID, OnInit, Renderer2 } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit, Renderer2, inject, computed } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
-
+import { LanguageService } from '../../services/language.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -31,15 +31,20 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  readonly navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Resume', href: '#resume' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  languageService = inject(LanguageService);
+
+  // Compute navItems dynamically based on current language
+  navItems = computed(() => {
+    const t = this.languageService.t().header;
+    return [
+      { label: t.about || 'About', href: '#about' },
+      { label: t.experience || 'Experience', href: '#experience' },
+      { label: t.skills || 'Skills', href: '#skills' },
+      { label: t.projects || 'Projects', href: '#projects' },
+      { label: t.resume || 'Resume', href: '#resume' },
+      { label: t.contact || 'Contact', href: '#contact' },
+    ];
+  });
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
@@ -60,5 +65,10 @@ export class HeaderComponent implements OnInit {
         localStorage.setItem('theme', 'light');
       }
     }
+  }
+
+  toggleLanguage(): void {
+    const current = this.languageService.currentLang();
+    this.languageService.setLanguage(current === 'eng-us' ? 'pt-br' : 'eng-us');
   }
 }

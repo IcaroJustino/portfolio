@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 import { PageComponent } from '@components/Page/Page.component';
 import { AboutMeComponent } from '@components/AboutMeSection/Aboutme.component';
 import { ExperienceComponent } from '@components/ExperienceSection/Experience.component';
 import { LucideAngularModule } from 'lucide-angular';
 import { SkillsComponent } from '@components/SkillsSection/Skills.component';
+import { ProjectsComponent } from '@components/ProjectsSection/Projects.component';
 import { ContactComponent } from '@components/ContactSection/Contact.component';
 import { FooterComponent } from '@components/Footer/Footer.component';
 import { ResumeComponent } from '@components/ResumeSection/Resume.component';
@@ -16,6 +18,7 @@ import { ResumeComponent } from '@components/ResumeSection/Resume.component';
     AboutMeComponent,
     ExperienceComponent,
     SkillsComponent,
+    ProjectsComponent,
     ResumeComponent,
     ContactComponent,
     FooterComponent,
@@ -24,9 +27,10 @@ import { ResumeComponent } from '@components/ResumeSection/Resume.component';
   templateUrl: './Home.component.html',
 })
 export class HomeComponent {
-  readonly welcomeText = 'Olá, meu nome é ';
-  readonly name = 'Icaro Justino.';
+  languageService = inject(LanguageService);
+
+  heroTexts = computed(() => this.languageService.t().hero);
+
   profileImageUrl = 'assets/profile.jpg';
-  readonly description =
-    'Fullstack developer, inspirado em explorar todos os campos do desenvolvimento para se tornar um solido arquiteto de software entendendo os problemas e quais são as melhores soluções.';
+  name = 'Icaro Justino.';
 }

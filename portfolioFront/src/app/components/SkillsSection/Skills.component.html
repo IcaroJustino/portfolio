@@ -2,15 +2,15 @@
 
   <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-10">
     <header class="text-center">
-      <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ title }}</h2>
+      <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ texts().title }}</h2>
       <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
-        {{ subtitle }}
+        {{ texts().subtitle }}
       </p>
     </header>
 
     <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
       <article
-        *ngFor="let category of categories"
+        *ngFor="let category of categories()"
         class="rounded-2xl border border-border/80 bg-bg-light/45 p-6 shadow-[0_18px_45px_rgba(0,0,0,0.2)] backdrop-blur-sm"
       >
         <div class="flex items-center gap-3">

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, OnDestroy, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ChangeDetectorRef, inject, computed } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
@@ -9,19 +10,20 @@ import { LucideAngularModule } from 'lucide-angular';
   templateUrl: './Aboutme.component.html',
 })
 export class AboutMeComponent implements OnInit, OnDestroy {
-  readonly aboutmeText =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+  languageService = inject(LanguageService);
 
-  readonly myJourneyText =
-    'My journey in the world of technology began with a passion for problem-solving and creativity. I started learning programming languages in high school, which sparked my interest in software development. Over the years, I have honed my skills through various projects and internships, gaining experience in both frontend and backend development. I am particularly drawn to building user-friendly applications that make a positive impact on peoples lives. My goal is to continue growing as a developer and contribute to innovative projects that push the boundaries of technology.';
+  texts = computed(() => this.languageService.t().about);
 
-  readonly myApproachText =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-
-  titleCards = [
-    { targetValue: 20, suffix: '+', description: 'Projects Completed', icon: 'medal', displayCount: '0+' },
-    { targetValue: 500, suffix: '+', description: 'Energy Drinks Downed', icon: 'briefcase', displayCount: '0+' },
-    { targetValue: 5, suffix: '+', description: 'Years Coding', icon: 'code', displayCount: '0+' },
+  titleCards: {
+    targetValue: number;
+    suffix: string;
+    descriptionKey: 'projects' | 'energy' | 'years';
+    icon: string;
+    displayCount: string;
+  }[] = [
+    { targetValue: 10, suffix: '+', descriptionKey: 'projects', icon: 'medal', displayCount: '0+' },
+    { targetValue: 500, suffix: '+', descriptionKey: 'energy', icon: 'briefcase', displayCount: '0+' },
+    { targetValue: 4, suffix: '+', descriptionKey: 'years', icon: 'code', displayCount: '0+' },
   ];
 
   private observer: IntersectionObserver | null = null;
@@ -30,7 +32,7 @@ export class AboutMeComponent implements OnInit, OnDestroy {
   constructor(
     private el: ElementRef,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit() {
     if (typeof IntersectionObserver !== 'undefined') {

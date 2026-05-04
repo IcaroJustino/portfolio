@@ -1,33 +1,32 @@
 <app-page>
-  <section id="home" class="relative isolate left-1/2 right-1/2 w-screen ml-[-50vw] mr-[-50vw] overflow-hidden bg-bg-dark py-16 sm:py-20">
-    <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(90deg,transparent,rgba(103,191,228,0.22),transparent)]"></div>
+  <section id="home"
+    class="relative isolate left-1/2 right-1/2 w-screen ml-[-50vw] mr-[-50vw] overflow-hidden bg-bg-dark py-16 sm:py-20">
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(90deg,transparent,rgba(103,191,228,0.22),transparent)]">
+    </div>
 
     <div class="mx-auto grid max-w-5xl items-center gap-12 px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
       <div class="text-center lg:text-left">
         <h1 class="text-4xl font-semibold leading-tight text-text sm:text-5xl">
-          <span class="block">{{welcomeText}},</span>
+          <span class="block">{{ heroTexts().welcome }}</span>
           <span class="mt-2 block name-gradient">
-            {{name}}
+            {{ name }}
           </span>
         </h1>
 
         <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-muted sm:text-lg lg:mx-0">
-          {{description}}
+          {{ heroTexts().description }}
         </p>
 
         <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-          <a
-            class="inline-flex w-full items-center justify-center gap-2 rounded-none border border-border bg-highlight px-5 py-2.5 text-sm font-medium text-text transition hover:bg-highlight/90 sm:w-auto"
-            href="#projects"
-          >
-            Ver Projetos
+          <a class="rounded-sm inline-flex w-full items-center justify-center gap-2 rounded-none border border-border bg-highlight px-5 py-2.5 text-sm font-medium text-text transition hover:bg-highlight/90 sm:w-auto"
+            href="#projects">
+            {{ heroTexts().viewProjects }}
             <lucide-icon name="arrow-right" class="h-4 w-4" aria-hidden="true"></lucide-icon>
           </a>
-          <a
-            class="inline-flex w-full items-center justify-center gap-2 rounded-none border border-border bg-bg-light/70 px-5 py-2.5 text-sm font-medium text-text transition hover:bg-bg-light sm:w-auto"
-            href="#contact"
-          >
-            Contato
+          <a class="rounded-sm inline-flex w-full items-center justify-center gap-2 rounded-none border border-border bg-bg-light/70 px-5 py-2.5 text-sm font-medium text-text transition hover:bg-bg-light sm:w-auto"
+            href="#contact">
+            {{ heroTexts().contact }}
             <lucide-icon name="arrow-right" class="h-4 w-4" aria-hidden="true"></lucide-icon>
           </a>
         </div>
@@ -36,11 +35,7 @@
       <div class="relative">
         <div class="absolute -inset-3 rounded-[2.5rem] border border-border/40 bg-bg-light/30 blur-sm"></div>
         <figure class="relative overflow-hidden rounded-[2.25rem] border border-border bg-bg-light p-2 shadow-2xl">
-          <img
-            [src]="profileImageUrl"
-            alt="Foto de perfil"
-            class="aspect-4/5 w-full rounded-[1.9rem] object-cover"
-          />
+          <img [src]="profileImageUrl" alt="Foto de perfil" class="aspect-4/5 w-full rounded-[1.9rem] object-cover" />
         </figure>
       </div>
     </div>
@@ -48,8 +43,8 @@
   <app-aboutme></app-aboutme>
   <app-experience-section></app-experience-section>
   <app-skills-section></app-skills-section>
+  <app-projects-section></app-projects-section>
   <app-resume-section></app-resume-section>
   <app-contact-section></app-contact-section>
 </app-page>
 <app-footer></app-footer>
-

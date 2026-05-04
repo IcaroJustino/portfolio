@@ -3,9 +3,9 @@
   
   <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
     <header class="text-center mb-12">
-      <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ title }}</h2>
+      <h2 class="text-3xl font-semibold tracking-wide text-text sm:text-4xl">{{ texts().title }}</h2>
       <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-text-muted sm:text-base">
-        {{ subtitle }}
+        {{ texts().subtitle }}
       </p>
     </header>
 
@@ -17,8 +17,8 @@
           <lucide-icon name="file-text" class="h-6 w-6"></lucide-icon>
         </div>
         <div>
-          <h3 class="text-lg font-bold text-text">Icaro Justino - Resume</h3>
-          <p class="text-sm text-text-muted">Fullstack Developer • Software Architecture Enthusiast</p>
+          <h3 class="text-lg font-bold text-text">{{ texts().name }}</h3>
+          <p class="text-sm text-text-muted">{{ texts().role }}</p>
         </div>
       </div>
 
@@ -28,25 +28,25 @@
           class="w-full sm:w-auto whitespace-nowrap inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-bg-dark transition hover:bg-primary/90"
         >
           <lucide-icon [name]="showPreview ? 'eye-off' : 'eye'" class="h-4 w-4"></lucide-icon>
-          {{ showPreview ? 'Hide Resume' : 'Show Resume' }}
+          {{ showPreview ? texts().hideBtn : texts().showBtn }}
         </button>
         
         <a 
-          [href]="resumeUrlPath" 
+          [href]="texts().pdfFile" 
           download="Icaro_Miranda_Resume.pdf"
           class="w-full sm:w-auto whitespace-nowrap inline-flex items-center justify-center gap-2 rounded-lg border border-border/80 bg-bg-dark/50 px-5 py-2.5 text-sm font-semibold text-text transition hover:bg-bg-dark hover:border-primary/50"
         >
           <lucide-icon name="download" class="h-4 w-4"></lucide-icon>
-          Download PDF
+          {{ texts().downloadBtn }}
         </a>
 
         <a 
-          [href]="resumeUrlPath" 
+          [href]="texts().pdfFile" 
           target="_blank"
           class="w-full sm:w-auto whitespace-nowrap inline-flex items-center justify-center gap-2 rounded-lg border border-border/80 bg-bg-dark/50 px-5 py-2.5 text-sm font-semibold text-text transition hover:bg-bg-dark hover:border-primary/50"
         >
           <lucide-icon name="external-link" class="h-4 w-4"></lucide-icon>
-          Open in New Tab
+          {{ texts().openTabBtn }}
         </a>
       </div>
     </div>
@@ -55,19 +55,19 @@
     <div *ngIf="showPreview" class="overflow-hidden rounded-2xl border border-border/80 bg-bg-light/20 shadow-xl backdrop-blur-sm transition-all duration-500">
       <div class="flex items-center justify-between border-b border-border/80 bg-bg-light/40 px-4 py-3">
         <div class="flex items-center gap-2 text-sm font-medium text-text">
-          <span>Resume Preview</span>
+          <span>{{ texts().previewTitle }}</span>
         </div>
-        <span class="text-xs text-text-muted hidden sm:inline">Click 'Download PDF' for the full version</span>
+        <span class="text-xs text-text-muted hidden sm:inline">{{ texts().previewHint }}</span>
       </div>
       
       <div class="aspect-[1/1.4] w-full bg-[#323639] sm:h-[800px] sm:aspect-auto">
         <object 
-          [data]="safeResumeUrl" 
+          [data]="safeResumeUrl()" 
           type="application/pdf"
           width="100%" 
           height="100%" 
           class="border-0"
-          title="Resume PDF Preview">
+          title="Pré-visualização do Currículo PDF">
         </object>
       </div>
     </div>

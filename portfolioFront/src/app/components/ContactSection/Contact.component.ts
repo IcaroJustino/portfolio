@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, computed } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-contact-section',
@@ -10,11 +11,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './Contact.component.html',
 })
 export class ContactComponent implements OnInit {
-  contactInfo = [
-    { icon: 'mail', title: 'Email', value: 'icaro.justino@gmail.com' },
-    { icon: 'phone', title: 'Phone', value: '+55 11 99999-9999' },
-    { icon: 'map-pin', title: 'Location', value: 'Brasil' }
-  ];
+  languageService = inject(LanguageService);
+
+  texts = computed(() => this.languageService.t().contact);
+
+  contactInfo = computed(() => {
+    const info = this.texts().info;
+    return [
+      { icon: 'mail', title: info[0].title, value: info[0].value },
+      { icon: 'phone', title: info[1].title, value: info[1].value },
+      { icon: 'map-pin', title: info[2].title, value: info[2].value }
+    ];
+  });
 
   formData = {
     name: '',
@@ -72,19 +80,20 @@ export class ContactComponent implements OnInit {
       });
 
       const data = await response.json();
+      const t = this.texts().toast;
 
       if (response.ok) {
-        this.showToast('success', 'Message sent successfully! 🎉');
+        this.showToast('success', t.success);
         this.formData = { name: '', email: '', message: '' };
         this.startCooldown(60); // 60-second cooldown after success
       } else if (response.status === 429) {
-        this.showToast('error', data.error || 'Too many requests. Please wait a few minutes.');
+        this.showToast('error', data.error || t.rateLimit);
         this.startCooldown(120); // longer cooldown on rate-limit
       } else {
-        this.showToast('error', data.error || 'Failed to send message.');
+        this.showToast('error', data.error || t.error);
       }
     } catch (error) {
-      this.showToast('error', 'Connection error. Please try again later.');
+      this.showToast('error', this.texts().toast.connError);
       console.error('Error sending message:', error);
     } finally {
       this.isSubmitting = false;
