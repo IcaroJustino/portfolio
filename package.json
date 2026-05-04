@@ -5,7 +5,7 @@
     "start": "concurrently \"npm run start:api\" \"npm run start:front\"",
     "start:api": "cd api && node server.js",
     "start:front": "cd portfolioFront && npm start",
-    "install:all": "cd api && npm install && cd ../portfolioFront && npm install",
+    "install:all": "cd api && npm install && cd ../portfolioFront && npm install --legacy-peer-deps",
     "postinstall": "npm run install:all",
     "build": "cd portfolioFront && npm run build"
   },
