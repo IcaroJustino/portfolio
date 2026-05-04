@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject, computed } from '@angular/core';
+import { Component, OnInit, inject, computed, signal } from '@angular/core';
 import { LucideAngularModule } from 'lucide-angular';
 import { FormsModule } from '@angular/forms';
 import { LanguageService } from '../../services/language.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-section',
@@ -24,45 +25,58 @@ export class ContactComponent implements OnInit {
     ];
   });
 
-  formData = {
+  private toastr = inject(ToastrService);
+
+  formData = signal({
     name: '',
     email: '',
     message: ''
-  };
+  });
 
   // Anti-spam: honeypot field (bots auto-fill this, humans never see it)
-  honeypot = '';
+  honeypot = signal('');
 
   // Anti-spam: records when the component loaded
   private loadedAt = 0;
 
   // Submission state
-  isSubmitting = false;
-
-  // Toast notification
-  toast: { type: 'success' | 'error'; message: string; visible: boolean } = {
-    type: 'success',
-    message: '',
-    visible: false
-  };
-
-  // Anti-spam: cooldown (seconds remaining until user can submit again)
-  cooldownRemaining = 0;
-  private cooldownInterval: ReturnType<typeof setInterval> | null = null;
+  isSubmitting = signal(false);
+  
+  // Flag to keep the button disabled after successful submission
+  hasSubmitted = signal(false);
 
   ngOnInit() {
     this.loadedAt = Date.now();
   }
 
-  get isOnCooldown(): boolean {
-    return this.cooldownRemaining > 0;
-  }
-
   async onSubmit() {
-    if (this.isSubmitting || this.isOnCooldown) return;
+    if (this.isSubmitting() || this.hasSubmitted()) return;
 
-    this.isSubmitting = true;
-    this.hideToast();
+    const data = this.formData();
+
+    // Field Validations
+    if (!data.name.trim()) {
+      this.toastr.error('Por favor, preencha o seu nome.', 'Erro');
+      return;
+    }
+
+    if (!data.email.trim()) {
+      this.toastr.error('Por favor, preencha o seu e-mail.', 'Erro');
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.email)) {
+      this.toastr.error('Por favor, insira um e-mail válido.', 'Erro');
+      return;
+    }
+
+    if (!data.message.trim()) {
+      this.toastr.error('Por favor, digite sua mensagem.', 'Erro');
+      return;
+    }
+
+    this.isSubmitting.set(true);
 
     try {
       const response = await fetch('/api/send-email', {
@@ -71,66 +85,30 @@ export class ContactComponent implements OnInit {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          nome: this.formData.name,
-          email: this.formData.email,
-          mensagem: this.formData.message,
-          _honeypot: this.honeypot,       // honeypot for bot detection
-          _loadedAt: this.loadedAt         // timing for bot detection
+          nome: data.name,
+          email: data.email,
+          mensagem: data.message,
+          _honeypot: this.honeypot(),
+          _loadedAt: this.loadedAt
         }),
       });
 
-      const data = await response.json();
+      const resData = await response.json();
       const t = this.texts().toast;
 
       if (response.ok) {
-        this.showToast('success', t.success);
-        this.formData = { name: '', email: '', message: '' };
-        this.startCooldown(60); // 60-second cooldown after success
+        this.formData.set({ name: '', email: '', message: '' });
+        this.hasSubmitted.set(true); // Block button without exposing timer
+        this.toastr.success(t.success, 'Sucesso');
       } else if (response.status === 429) {
-        this.showToast('error', data.error || t.rateLimit);
-        this.startCooldown(120); // longer cooldown on rate-limit
+        this.toastr.warning(resData.error || t.rateLimit, 'Atenção');
       } else {
-        this.showToast('error', data.error || t.error);
+        this.toastr.error(resData.error || t.error, 'Erro');
       }
     } catch (error) {
-      this.showToast('error', this.texts().toast.connError);
-      console.error('Error sending message:', error);
+      this.toastr.error(this.texts().toast.connError, 'Erro');
     } finally {
-      this.isSubmitting = false;
+      this.isSubmitting.set(false);
     }
-  }
-
-  // ─── Toast helpers ─────────────────────────────────────────
-  showToast(type: 'success' | 'error', message: string) {
-    this.toast = { type, message, visible: true };
-
-    // Auto-hide after 6 seconds
-    setTimeout(() => {
-      this.hideToast();
-    }, 6000);
-  }
-
-  hideToast() {
-    this.toast = { ...this.toast, visible: false };
-  }
-
-  // ─── Cooldown helpers ──────────────────────────────────────
-  private startCooldown(seconds: number) {
-    this.cooldownRemaining = seconds;
-
-    if (this.cooldownInterval) {
-      clearInterval(this.cooldownInterval);
-    }
-
-    this.cooldownInterval = setInterval(() => {
-      this.cooldownRemaining--;
-      if (this.cooldownRemaining <= 0) {
-        this.cooldownRemaining = 0;
-        if (this.cooldownInterval) {
-          clearInterval(this.cooldownInterval);
-          this.cooldownInterval = null;
-        }
-      }
-    }, 1000);
   }
 }
