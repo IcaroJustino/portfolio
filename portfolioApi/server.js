@@ -21,17 +21,16 @@ app.use(cors({
 app.use(express.json({ limit: '10kb' })); // Limit payload size
 
 
-// ─── Rate Limiting ──────────────────────────────────────────
+// Trust the first proxy in Vercel to properly handle x-forwarded-for headers
+app.set('trust proxy', 1);
+
 // Max 3 emails per IP every 15 minutes
 const emailLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 3,
   standardHeaders: true,
   legacyHeaders: false,
-  message: { error: 'Too many messages sent. Please try again in 15 minutes.' },
-  keyGenerator: (req) => {
-    return req.headers['x-forwarded-for'] || req.ip;
-  },
+  message: { error: 'Too many messages sent. Please try again in 15 minutes.' }
 });
 
 
@@ -118,12 +117,10 @@ app.post('/api/send-email', emailLimiter, async (req, res) => {
       `
     });
 
-    console.log('E-mail enviado com sucesso:', data.id);
     await enforceMinTime(startTime);
     res.status(200).json({ success: true, message: 'Mensagem enviada!' });
     
   } catch (error) {
-    console.error('Erro ao enviar e-mail via Resend:', error);
     await enforceMinTime(startTime);
     res.status(500).json({ error: 'Falha ao processar o envio do e-mail.' });
   }
@@ -135,7 +132,5 @@ const PORT = process.env.PORT || 3000;
 module.exports = app;
 
 if (process.env.NODE_ENV !== 'production' || process.env.LISTEN_APP === 'true') {
-  app.listen(PORT, () => {
-    console.log(`🚀 API de e-mail rodando em http://localhost:${PORT}`);
-  });
+  app.listen(PORT);
 }
