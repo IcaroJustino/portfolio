@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { NavigationHistoryService } from '@services/NavigationHistory.service';
+import { Component, computed,inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { PageComponent } from '@components/Page/Page.component';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-not-found',
@@ -10,18 +10,8 @@ import { PageComponent } from '@components/Page/Page.component';
   templateUrl: './NotFound.component.html',
 })
 export class NotFoundComponent {
-  constructor(
-    private readonly router: Router,
-    @Inject(NavigationHistoryService) private readonly history: NavigationHistoryService,
-  ) {}
+  languageService = inject(LanguageService);
+  
+  notFoundTexts = computed(() => this.languageService.t().notFound);
 
-  goBack(): void {
-    const target = this.history.getLastUrl();
-    if (!target || target.startsWith('/not-found')) {
-      this.router.navigateByUrl('/');
-      return;
-    }
-
-    this.router.navigateByUrl(target);
-  }
 }
