@@ -187,6 +187,12 @@ const EN_US = {
     connect: 'Connect',
     copyright: '© 2026 Icaro Justino. All rights reserved.',
     builtWith: 'Built with Angular'
+  },
+  notFound: {
+    title: '404',
+    subtitle: 'Page not Found',
+    description: 'Oops! The page you are looking for does not exist.',
+    goBack: 'Back to Home Page',
   }
 };
 
@@ -375,6 +381,12 @@ const PT_BR = {
     connect: 'Conecte-se',
     copyright: '© 2026 Icaro Justino. Todos os direitos reservados.',
     builtWith: 'Construído com Angular'
+  },
+  notFound: {
+    title: '404',
+    subtitle: 'Página Não Encontrada',
+    description: 'Oops! A página que você está procurando não existe.',
+    goBack: 'Voltar para Página Principal',
   }
 };
 
@@ -382,7 +394,7 @@ const PT_BR = {
   providedIn: 'root'
 })
 export class LanguageService {
-  currentLang = signal<Language>('eng-us');
+  currentLang = signal<Language>('pt-br');
 
   t = computed(() => {
     return this.currentLang() === 'eng-us' ? EN_US : PT_BR;

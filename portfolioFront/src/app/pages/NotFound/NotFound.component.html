@@ -1,21 +1,33 @@
 <app-page>
-  <section class="flex min-h-[60vh] flex-col items-start justify-center">
-    <p class="text-text-muted">404</p>
-    <h1 class="mt-2 text-4xl font-semibold">Pagina nao encontrada</h1>
-    <p class="mt-4 text-text-muted">
-      A rota que voce tentou acessar nao existe. Use o botao abaixo para voltar.
-    </p>
-    <div class="mt-6 flex flex-wrap gap-3">
-      <button
-        class="rounded-md bg-primary px-4 py-2 text-bg"
-        type="button"
-        (click)="goBack()"
+  <section class="mx-auto flex min-h-[70vh] w-full max-w-6xl flex-col-reverse items-center justify-center gap-12 py-12 lg:flex-row lg:justify-between lg:gap-8">
+    
+    <div class="flex w-full max-w-md flex-col items-start text-left lg:max-w-lg">
+      <h1 class="font-serif text-5xl tracking-wide text-text lg:text-6xl">
+        {{ notFoundTexts().title }}
+      </h1>
+      <h2 class="mt-4 text-2xl font-medium text-text lg:text-3xl">
+        {{ notFoundTexts().subtitle }}
+      </h2>
+      
+      <p class="mt-6 text-sm leading-relaxed text-text-muted lg:text-base">
+        {{ notFoundTexts().description }}
+      </p>
+      
+      <a
+        routerLink="/"
+        class="mt-10 inline-flex items-center gap-2 rounded-full border border-border px-8 py-3 text-sm font-medium text-text transition-all hover:bg-border-muted"
       >
-        Voltar para a ultima pagina
-      </button>
-      <a class="rounded-md border border-border px-4 py-2" routerLink="/">
-        Ir para home
+        <span>&laquo;</span> {{ notFoundTexts().goBack }}
       </a>
     </div>
+
+    <div class="w-full max-w-md lg:max-w-lg">
+      <img
+        src="assets/pages/notfound.png"
+        alt="404 Not Found"
+        class="h-auto w-full object-contain animate-slide-up"
+      />
+    </div>
+
   </section>
 </app-page>
