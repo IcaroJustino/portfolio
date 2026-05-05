@@ -21,9 +21,9 @@ export class AboutMeComponent implements OnInit, OnDestroy {
     icon: string;
     displayCount: string;
   }[] = [
-    { targetValue: 10, suffix: '+', descriptionKey: 'projects', icon: 'medal', displayCount: '0+' },
+    { targetValue: 5, suffix: '+', descriptionKey: 'projects', icon: 'medal', displayCount: '0+' },
     { targetValue: 500, suffix: '+', descriptionKey: 'energy', icon: 'briefcase', displayCount: '0+' },
-    { targetValue: 4, suffix: '+', descriptionKey: 'years', icon: 'code', displayCount: '0+' },
+    { targetValue: 3, suffix: '+', descriptionKey: 'years', icon: 'code', displayCount: '0+' },
   ];
 
   private observer: IntersectionObserver | null = null;
