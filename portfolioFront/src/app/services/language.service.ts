@@ -32,7 +32,11 @@ const EN_US = {
   },
   experience: {
     title: 'Professional Experience',
-    subtitle: 'My professional journey and key experiences',
+    subtitle: 'My professional journey',
+    headerOverline: 'My Journey',
+    headerTitle: 'Developer ',
+    headerTitleHighlight: 'Journey',
+    headerDescription: 'A timeline of my technical and professional evolution, from the first program to current architecture challenges.',
     roleLabel: 'Role',
     techLabel: 'Technologies:',
     achievementsLabel: 'Key Achievements:',
@@ -53,6 +57,19 @@ const EN_US = {
         ]
       },
       {
+        badge: 'Education',
+        title: 'Postgraduate in Software Quality',
+        company: 'CIn - UFPE',
+        location: 'Recife, PE, Brazil',
+        period: '2025 - 2026',
+        summary: 'Specialization focused on test automation and data analysis, deepening knowledge in quality engineering and software architecture.',
+        technologies: ['Test Automation', 'Data Analysis', 'Software Quality', 'QA Architecture'],
+        achievements: [
+          'Theoretical and practical deepening in test architecture and automation.',
+          'Development of skills in data analysis applied to software quality.'
+        ]
+      },
+      {
         badge: 'Full-Time',
         title: 'Software Developer',
         company: 'Logap Sistemas',
@@ -65,6 +82,19 @@ const EN_US = {
           'Developed analytical dashboards with Angular and Tailwind CSS consuming real-time data via GraphQL.',
           'Structured CI/CD pipelines with GitLab and Docker to automate build, tests, and deploy in an AWS environment.',
           'Automated multiplatform tests using Cypress and Playwright, ensuring coverage of critical flows.'
+        ]
+      },
+      {
+        badge: 'Education',
+        title: 'Degree in Systems Analysis and Development',
+        company: 'IFRN',
+        location: 'Natal, RN, Brazil',
+        period: '2019 - 2024',
+        summary: 'Higher education degree in technology, providing a solid foundation in software engineering, programming, and database modeling.',
+        technologies: ['Software Engineering', 'Data Structures', 'Databases', 'Programming'],
+        achievements: [
+          'Solid theoretical foundation in algorithms, databases, and software engineering.',
+          'Development of comprehensive academic projects reflecting real-world business scenarios.'
         ]
       },
       {
@@ -226,7 +256,11 @@ const PT_BR = {
   },
   experience: {
     title: 'Experiência Profissional',
-    subtitle: 'Minha jornada profissional e principais experiências',
+    subtitle: 'Minha jornada profissional',
+    headerOverline: 'Minha Trajetória',
+    headerTitle: 'Minha jornada como ',
+    headerTitleHighlight: 'Engenheiro de Software',
+    headerDescription: 'Uma linha do tempo da minha evolução técnica e profissional, desde o primeiro projeto até os desafios atuais.',
     roleLabel: 'Cargo',
     techLabel: 'Tecnologias:',
     achievementsLabel: 'Principais Conquistas:',
@@ -247,6 +281,19 @@ const PT_BR = {
         ]
       },
       {
+        badge: 'Formação',
+        title: 'Pós-graduação em Qualidade de Software',
+        company: 'CIn - UFPE',
+        location: 'Recife, PE, Brasil',
+        period: '2025 - 2026',
+        summary: 'Especialização focada em automação de testes e análise de dados, aprofundando conhecimentos em engenharia de qualidade e arquitetura de testes.',
+        technologies: ['Automação de Testes', 'Análise de Dados', 'Qualidade de Software', 'Arquitetura QA'],
+        achievements: [
+          'Aprofundamento teórico e prático em arquitetura de testes e automação.',
+          'Desenvolvimento de competências em análise de dados aplicadas à qualidade de software.'
+        ]
+      },
+      {
         badge: 'Full-Time',
         title: 'Desenvolvedor de Software',
         company: 'Logap Sistemas',
@@ -259,6 +306,19 @@ const PT_BR = {
           'Desenvolvi dashboards analíticos com Angular e Tailwind CSS consumindo dados em tempo real via GraphQL.',
           'Estruturei pipelines CI/CD com GitLab e Docker para automatizar build, testes e deploy em ambiente AWS.',
           'Automatizei testes multiplataforma utilizando Cypress e Playwright, garantindo cobertura dos fluxos críticos.'
+        ]
+      },
+      {
+        badge: 'Formação',
+        title: 'Graduação em Análise e Desenvolvimento de Sistemas',
+        company: 'IFRN',
+        location: 'Natal, RN, Brasil',
+        period: '2019 - 2024',
+        summary: 'Formação superior em tecnologia, com base sólida em engenharia de software, programação e modelagem de banco de dados.',
+        technologies: ['Engenharia de Software', 'Estrutura de Dados', 'Banco de Dados', 'Programação'],
+        achievements: [
+          'Base teórica sólida em algoritmos, banco de dados e engenharia de software.',
+          'Desenvolvimento de projetos acadêmicos completos refletindo cenários empresariais reais.'
         ]
       },
       {
