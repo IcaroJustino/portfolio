@@ -54,6 +54,14 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = false;
   }
 
+  scrollToSection(href: string): void {
+    const id = href.replace('#', '');
+    const el = this.document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
   toggleTheme(): void {
     this.isDarkMode = !this.isDarkMode;
     if (isPlatformBrowser(this.platformId)) {

@@ -1,13 +1,13 @@
 <header class="sticky top-0 z-[2147483646] border-b border-border bg-gradient-to-r from-bg-dark via-bg to-bg-dark/70 backdrop-blur">
   <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
-    <a class="text-lg font-semibold tracking-wide text-text" href="#home">Portfolio</a>
+    <a class="text-lg font-semibold tracking-wide text-text cursor-pointer" (click)="scrollToSection('#home')">Portfolio</a>
 
     <div class="flex items-center gap-6">
       <nav class="hidden items-center gap-6 text-sm font-medium text-text-muted md:flex">
         <a
           *ngFor="let item of navItems()"
-          class="transition-colors hover:text-text"
-          [attr.href]="item.href"
+          class="cursor-pointer transition-colors hover:text-text"
+          (click)="scrollToSection(item.href)"
         >
           {{ item.label }}
         </a>
@@ -74,8 +74,7 @@
           <a
             *ngFor="let item of navItems()"
             class="cursor-pointer rounded-lg px-2 py-1 transition-colors hover:text-primary"
-            [attr.href]="item.href"
-            (click)="closeMenu()"
+            (click)="scrollToSection(item.href); closeMenu()"
           >
             {{ item.label }}
           </a>

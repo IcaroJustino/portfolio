@@ -12,18 +12,22 @@ const EN_US = {
     contact: 'Contact'
   },
   hero: {
-    welcome: 'Welcome to my portfolio',
+    heroLine1: "Icaro Justino",
+    heroLine2: 'Software Engineer',
+    watermark: 'About',
+    sideLabel: 'ABOUT',
     description: 'I engineer robust and scalable full-stack applications, with a strong focus on clean code, modern architectures, and delivering high-quality technical solutions.',
+    contactBtn: 'Contact Me!',
     viewProjects: 'View Projects',
     contact: 'Contact'
   },
   about: {
     title: 'About Me',
-    aboutmeText: 'I am a software developer and data analyst with experience in transforming messy data into useful information and manual processes into automated solutions. I have worked on both sides of the stack from APIs and microservices to real-time operational dashboards and feel comfortable moving between software engineering and data analysis as the problem requires.',
+    aboutmeText: "Fullstack Developer with hands-on experience across the entire stack, building robust APIs with Java, Spring Boot, and Node.js, modern interfaces with React and Next.js, and CI/CD pipelines that streamline delivery. I've worked across technical leadership, quality automation, and microservices architecture in real-world projects across different industries. I care about code that works, teams that grow, and solutions that solve actual problems.",    
     journeyTitle: 'My Journey',
-    myJourneyText: 'My professional journey began in 2019, driven by a strong aptitude for solving complex problems through technology. Since then, I have built a solid career working across various environments—from large startups and public companies to big tech—currently specializing in software quality, test automation, and web tool development.',
+    myJourneyText: 'My professional journey began in 2019, driven by a strong aptitude for solving complex problems through technology. Since then, I have built a solid career working across various environments, from large startups and public companies to big tech, currently specializing in software quality, test automation, and web tool development.',
     approachTitle: 'My Approach',
-    myApproachText: 'Before writing the first line of code, I like to understand the case well, what the edges are, what can fail, what the acceptance criteria do not say but should. Only then I implement, already thinking about how I will test. Automation is not a final step for me, it is part of the process from the beginning.',
+    myApproachText: 'Before writing the first line of code, I like to fully understand the problem, what the project requirements are, what can fail, what wasn\'t specified but should have been, and what\'s truly expected. Only then do I start building, from backend to frontend, with close attention to every detail of the solution. Automation isn\'t a final step for me, it\'s part of the process from day one because writing good code and making sure it actually works are, to me, the same thing.',
     stats: {
       projects: 'Projects Completed',
       energy: 'Energy Drinks Downed',
@@ -189,9 +193,9 @@ const EN_US = {
     connectTitle: 'Let\'s Connect',
     connectText: 'Whether you have a project in mind, want to collaborate, or just want to say hello, I would love to hear from you. Feel free to reach out!',
     info: [
-      { title: 'Email', value: 'icaro.justino@gmail.com' },
-      { title: 'Phone', value: '+55 84 98792-6693' },
-      { title: 'Location', value: 'Brazil' }
+      { title: 'Email', value: 'icaromirandajustino@gmail.com' },
+      { title: 'Phone', value: '+55 84 98792-6693', link: 'https://wa.me/5584987926693?text=Hi%20Icaro!' },
+      { title: 'LinkedIn', value: 'Icaro Justino', link: 'https://www.linkedin.com/in/icaro-justino/' }
     ],
     form: {
       name: 'Name',
@@ -199,13 +203,13 @@ const EN_US = {
       email: 'Email',
       emailPlaceholder: 'your.email@example.com',
       message: 'Message',
-      messagePlaceholder: 'Tell me about your project...',
+      messagePlaceholder: 'You can leave your message here!',
       sendBtn: 'Send Message',
       sendingBtn: 'Sending...',
       waitBtn: 'Wait {s}s'
     },
     toast: {
-      success: 'Message sent successfully! 🎉',
+      success: 'Message sent successfully!',
       rateLimit: 'Too many requests. Please wait a few minutes.',
       error: 'Failed to send message.',
       connError: 'Connection error. Please try again later.'
@@ -216,7 +220,7 @@ const EN_US = {
     quickLinks: 'Quick Links',
     connect: 'Connect',
     copyright: '© 2026 Icaro Justino. All rights reserved.',
-    builtWith: 'Built with Angular'
+    builtWith: ''
   },
   notFound: {
     title: '404',
@@ -236,18 +240,22 @@ const PT_BR = {
     contact: 'Contato'
   },
   hero: {
-    welcome: 'Bem-vindo ao meu portfólio',
+    heroLine1: 'Icaro Justino',
+    heroLine2: 'Engenheiro de Software',
+    watermark: 'Sobre',
+    sideLabel: 'SOBRE',
     description: 'Construo aplicações full-stack robustas e escaláveis, com forte foco em código limpo, arquiteturas modernas e na entrega de soluções técnicas de alta qualidade.',
+    contactBtn: 'Fale Comigo!',
     viewProjects: 'Ver Projetos',
     contact: 'Contato'
   },
   about: {
     title: 'Sobre Mim',
-    aboutmeText: 'Sou desenvolvedor e analista de dados com experiência em transformar dados bagunçados em informação útil e processos manuais em soluções automatizadas. Tenho trabalhado nos dois lados da stack desde APIs e microsserviços até dashboards operacionais em tempo real e me sinto confortável transitando entre engenharia de software e análise de dados conforme o problema exige.',
+    aboutmeText: "Desenvolvedor Fullstack com experiência que vai do backend ao deploy, construindo APIs robustas com Java, Spring Boot e Node.js, interfaces modernas com React e Next.js, e pipelines CI/CD que eliminam fricção no ciclo de entrega. Já atuei em liderança técnica, automação de qualidade e arquitetura de microsserviços em projetos reais de diferentes setores. Gosto de código que funciona, times que evoluem e soluções que resolvem problemas de verdade.",
     journeyTitle: 'Minha Jornada',
-    myJourneyText: 'Minha jornada profissional teve início em 2019, impulsionada por uma forte aptidão para resolver problemas complexos com tecnologia. Desde então, construí uma carreira sólida passando por diferentes ambientes — desde grandes startups e empresas públicas até big techs —, atuando hoje na área de qualidade de software com foco em automação e desenvolvimento de ferramentas web.',
+    myJourneyText: 'Minha jornada profissional começou em 2023, impulsionada por uma forte aptidão para resolver problemas complexos através da tecnologia. Desde então, construí uma carreira sólida atuando em diferentes ambientes, de startups e empresas públicas até projetos de grande porte. Atualmente especializado em qualidade de software, automação de testes e desenvolvimento web.',
     approachTitle: 'Minha Abordagem',
-    myApproachText: 'Antes de escrever a primeira linha de código, gosto de entender bem o caso, quais são as bordas, o que pode falhar, o que o critério de aceite não diz mas deveria. Só então implemento, já pensando em como vou testar. Automação não é etapa final pra mim, é parte do processo desde o início.',
+    myApproachText: 'Antes de escrever a primeira linha de código, gosto de entender bem o problema, quais são os requisitos do projeto, o que pode falhar, o que não foi especificado mas deveria, o que é esperado. Só então implemento, construindo do backend ao frontend com atenção a cada detalhe da solução. Automação não é uma etapa final pra mim, faz parte do processo desde o início, porque escrever bom código e garantir que ele funciona de verdade são, pra mim, a mesma coisa.',
     stats: {
       projects: 'Projetos Concluídos',
       energy: 'Energéticos Tomados',
@@ -413,9 +421,9 @@ const PT_BR = {
     connectTitle: 'Vamos Conversar',
     connectText: 'Seja para um projeto em mente, uma colaboração, ou apenas para dizer olá, eu adoraria ouvir de você. Fique à vontade para entrar em contato!',
     info: [
-      { title: 'E-mail', value: 'icaro.justino@gmail.com' },
-      { title: 'Telefone', value: '+55 84 98792-6693' },
-      { title: 'Localização', value: 'Brasil' }
+      { title: 'E-mail', value: 'icaromirandajustino@gmail.com' },
+      { title: 'Telefone', value: '+55 84 98792-6693', link: 'https://wa.me/5584987926693?text=Oi%20Icaro!' },
+      { title: 'LinkedIn', value: 'Icaro Justino', link: 'https://www.linkedin.com/in/icaro-justino/?locale=pt_BR' }
     ],
     form: {
       name: 'Nome',
@@ -423,13 +431,13 @@ const PT_BR = {
       email: 'E-mail',
       emailPlaceholder: 'seu.email@exemplo.com',
       message: 'Mensagem',
-      messagePlaceholder: 'Fale um pouco sobre o seu projeto...',
+      messagePlaceholder: 'Você pode deixar sua mensagem aqui!',
       sendBtn: 'Enviar Mensagem',
       sendingBtn: 'Enviando...',
       waitBtn: 'Aguarde {s}s'
     },
     toast: {
-      success: 'Mensagem enviada com sucesso! 🎉',
+      success: 'Mensagem enviada com sucesso!',
       rateLimit: 'Muitas requisições. Aguarde alguns minutos.',
       error: 'Falha ao enviar mensagem.',
       connError: 'Erro de conexão. Tente novamente mais tarde.'
@@ -440,7 +448,7 @@ const PT_BR = {
     quickLinks: 'Links Rápidos',
     connect: 'Conecte-se',
     copyright: '© 2026 Icaro Justino. Todos os direitos reservados.',
-    builtWith: 'Construído com Angular'
+    builtWith: ''
   },
   notFound: {
     title: '404',

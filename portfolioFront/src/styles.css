@@ -68,6 +68,11 @@
 	--font-sans: var(--font-sans);
 }
 
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 5rem;
+}
+
 body {
 	background-color: var(--bg);
 	color: var(--text);

@@ -1,4 +1,5 @@
 import { Component, inject, computed } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../services/language.service';
 import { PageComponent } from '@components/Page/Page.component';
 import { AboutMeComponent } from '@components/AboutMeSection/Aboutme.component';
@@ -14,6 +15,7 @@ import { ResumeComponent } from '@components/ResumeSection/Resume.component';
   selector: 'app-home',
   standalone: true,
   imports: [
+    CommonModule,
     PageComponent,
     AboutMeComponent,
     ExperienceComponent,
@@ -31,6 +33,19 @@ export class HomeComponent {
 
   heroTexts = computed(() => this.languageService.t().hero);
 
-  profileImageUrl = 'assets/profile.jpg';
+  profileImageUrl = 'assets/profile.png';
   name = 'Icaro Justino.';
+
+  socialLinks = [
+    { icon: 'github', url: 'https://github.com/IcaroJustino', label: 'GitHub' },
+    { icon: 'linkedin', url: 'https://www.linkedin.com/in/icaro-justino/?locale=pt_BR', label: 'LinkedIn' },
+    { icon: 'mail', url: 'mailto:[EMAIL_ADDRESS]', label: 'Email' },
+  ];
+
+  scrollToContact(): void {
+    const el = document.getElementById('contact');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
