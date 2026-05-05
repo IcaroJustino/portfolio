@@ -19,9 +19,9 @@ export class ContactComponent implements OnInit {
   contactInfo = computed(() => {
     const info = this.texts().info;
     return [
-      { icon: 'mail', title: info[0].title, value: info[0].value },
-      { icon: 'phone', title: info[1].title, value: info[1].value },
-      { icon: 'map-pin', title: info[2].title, value: info[2].value }
+      { icon: 'mail', title: info[0].title, value: info[0].value, link: (info[0] as any).link || '' },
+      { icon: 'phone', title: info[1].title, value: info[1].value, link: (info[1] as any).link || '' },
+      { icon: 'linkedin', title: info[2].title, value: info[2].value, link: (info[2] as any).link || '' }
     ];
   });
 

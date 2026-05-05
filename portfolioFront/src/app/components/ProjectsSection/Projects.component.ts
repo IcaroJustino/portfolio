@@ -30,8 +30,8 @@ export class ProjectsComponent {
       description: p.description,
       image: 'assets/mipscode.png', // Or dynamically if you have multiple images
       technologies: p.technologies,
-      githubUrl: '#',
-      demoUrl: '#'
+      githubUrl: 'https://github.com/IcaroJustino/mipsfrontend',
+      demoUrl: 'https://github.com/IcaroJustino/mipsfrontend'
     }));
   });
 }

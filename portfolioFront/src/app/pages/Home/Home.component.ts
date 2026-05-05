@@ -38,9 +38,8 @@ export class HomeComponent {
 
   socialLinks = [
     { icon: 'github', url: 'https://github.com/IcaroJustino', label: 'GitHub' },
-    { icon: 'linkedin', url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: 'twitter', url: 'https://twitter.com', label: 'Twitter' },
-    { icon: 'mail', url: 'mailto:icaro.justino@gmail.com', label: 'Email' },
+    { icon: 'linkedin', url: 'https://www.linkedin.com/in/icaro-justino/?locale=pt_BR', label: 'LinkedIn' },
+    { icon: 'mail', url: 'mailto:[EMAIL_ADDRESS]', label: 'Email' },
   ];
 
   scrollToContact(): void {

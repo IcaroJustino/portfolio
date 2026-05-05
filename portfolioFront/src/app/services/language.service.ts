@@ -193,9 +193,9 @@ const EN_US = {
     connectTitle: 'Let\'s Connect',
     connectText: 'Whether you have a project in mind, want to collaborate, or just want to say hello, I would love to hear from you. Feel free to reach out!',
     info: [
-      { title: 'Email', value: 'icaro.justino@gmail.com' },
-      { title: 'Phone', value: '+55 84 98792-6693' },
-      { title: 'Location', value: 'Brazil' }
+      { title: 'Email', value: 'icaromirandajustino@gmail.com' },
+      { title: 'Phone', value: '+55 84 98792-6693', link: 'https://wa.me/5584987926693?text=Hi%20Icaro!' },
+      { title: 'LinkedIn', value: 'Icaro Justino', link: 'https://www.linkedin.com/in/icaro-justino/' }
     ],
     form: {
       name: 'Name',
@@ -203,13 +203,13 @@ const EN_US = {
       email: 'Email',
       emailPlaceholder: 'your.email@example.com',
       message: 'Message',
-      messagePlaceholder: 'Tell me about your project...',
+      messagePlaceholder: 'You can leave your message here!',
       sendBtn: 'Send Message',
       sendingBtn: 'Sending...',
       waitBtn: 'Wait {s}s'
     },
     toast: {
-      success: 'Message sent successfully! 🎉',
+      success: 'Message sent successfully!',
       rateLimit: 'Too many requests. Please wait a few minutes.',
       error: 'Failed to send message.',
       connError: 'Connection error. Please try again later.'
@@ -220,7 +220,7 @@ const EN_US = {
     quickLinks: 'Quick Links',
     connect: 'Connect',
     copyright: '© 2026 Icaro Justino. All rights reserved.',
-    builtWith: 'Built with Angular'
+    builtWith: ''
   },
   notFound: {
     title: '404',
@@ -421,9 +421,9 @@ const PT_BR = {
     connectTitle: 'Vamos Conversar',
     connectText: 'Seja para um projeto em mente, uma colaboração, ou apenas para dizer olá, eu adoraria ouvir de você. Fique à vontade para entrar em contato!',
     info: [
-      { title: 'E-mail', value: 'icaro.justino@gmail.com' },
-      { title: 'Telefone', value: '+55 84 98792-6693' },
-      { title: 'Localização', value: 'Brasil' }
+      { title: 'E-mail', value: 'icaromirandajustino@gmail.com' },
+      { title: 'Telefone', value: '+55 84 98792-6693', link: 'https://wa.me/5584987926693?text=Oi%20Icaro!' },
+      { title: 'LinkedIn', value: 'Icaro Justino', link: 'https://www.linkedin.com/in/icaro-justino/?locale=pt_BR' }
     ],
     form: {
       name: 'Nome',
@@ -431,13 +431,13 @@ const PT_BR = {
       email: 'E-mail',
       emailPlaceholder: 'seu.email@exemplo.com',
       message: 'Mensagem',
-      messagePlaceholder: 'Fale um pouco sobre o seu projeto...',
+      messagePlaceholder: 'Você pode deixar sua mensagem aqui!',
       sendBtn: 'Enviar Mensagem',
       sendingBtn: 'Enviando...',
       waitBtn: 'Aguarde {s}s'
     },
     toast: {
-      success: 'Mensagem enviada com sucesso! 🎉',
+      success: 'Mensagem enviada com sucesso!',
       rateLimit: 'Muitas requisições. Aguarde alguns minutos.',
       error: 'Falha ao enviar mensagem.',
       connError: 'Erro de conexão. Tente novamente mais tarde.'
@@ -448,7 +448,7 @@ const PT_BR = {
     quickLinks: 'Links Rápidos',
     connect: 'Conecte-se',
     copyright: '© 2026 Icaro Justino. Todos os direitos reservados.',
-    builtWith: 'Construído com Angular'
+    builtWith: ''
   },
   notFound: {
     title: '404',
