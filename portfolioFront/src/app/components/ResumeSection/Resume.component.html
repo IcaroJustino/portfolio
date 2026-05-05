@@ -23,9 +23,10 @@
       </div>
 
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto shrink-0">
+        <!-- Preview toggle button hidden on mobile -->
         <button 
           (click)="togglePreview()"
-          class="w-full sm:w-auto whitespace-nowrap inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-bg-dark transition hover:bg-primary/90"
+          class="hidden md:inline-flex w-full sm:w-auto whitespace-nowrap items-center justify-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-bg-dark transition hover:bg-primary/90"
         >
           <lucide-icon [name]="showPreview ? 'eye-off' : 'eye'" class="h-4 w-4"></lucide-icon>
           {{ showPreview ? texts().hideBtn : texts().showBtn }}
@@ -51,8 +52,8 @@
       </div>
     </div>
 
-    <!-- PDF Preview Pane -->
-    <div *ngIf="showPreview" class="overflow-hidden rounded-2xl border border-border/80 bg-bg-light/20 shadow-xl backdrop-blur-sm transition-all duration-500">
+    <!-- PDF Preview Pane (Hidden on mobile) -->
+    <div *ngIf="showPreview" class="hidden md:block overflow-hidden rounded-2xl border border-border/80 bg-bg-light/20 shadow-xl backdrop-blur-sm transition-all duration-500">
       <div class="flex items-center justify-between border-b border-border/80 bg-bg-light/40 px-4 py-3">
         <div class="flex items-center gap-2 text-sm font-medium text-text">
           <span>{{ texts().previewTitle }}</span>
