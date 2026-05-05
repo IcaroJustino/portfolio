@@ -1,42 +1,96 @@
 <app-page>
-  <section id="home"
-    class="relative isolate left-1/2 right-1/2 w-screen ml-[-50vw] mr-[-50vw] overflow-hidden bg-bg-dark py-16 sm:py-20">
+  <section
+    id="home"
+    class="relative isolate left-1/2 right-1/2 w-screen ml-[-50vw] mr-[-50vw] overflow-hidden bg-bg-dark py-16 sm:py-20"
+  >
     <div
       class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-px bg-[linear-gradient(90deg,transparent,rgba(103,191,228,0.22),transparent)]">
     </div>
 
-    <div class="mx-auto grid max-w-5xl items-center gap-12 px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
-      <div class="text-center lg:text-left">
-        <h1 class="text-4xl font-semibold leading-tight text-text sm:text-5xl">
-          <span class="block">{{ heroTexts().welcome }}</span>
-          <span class="mt-2 block name-gradient">
-            {{ name }}
-          </span>
-        </h1>
+    <div class="mx-auto max-w-5xl px-6">
 
-        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-text-muted sm:text-lg lg:mx-0">
-          {{ heroTexts().description }}
-        </p>
+      <!-- Main two-column layout -->
+      <div class="flex flex-col lg:flex-row items-center lg:items-center gap-10 lg:gap-12">
 
-        <div class="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center lg:justify-start">
-          <a class="rounded-sm inline-flex w-full items-center justify-center gap-2 rounded-none border border-border bg-highlight px-5 py-2.5 text-sm font-medium text-text transition hover:bg-highlight/90 sm:w-auto"
-            href="#projects">
-            {{ heroTexts().viewProjects }}
-            <lucide-icon name="arrow-right" class="h-4 w-4" aria-hidden="true"></lucide-icon>
-          </a>
-          <a class="rounded-sm inline-flex w-full items-center justify-center gap-2 rounded-none border border-border bg-bg-light/70 px-5 py-2.5 text-sm font-medium text-text transition hover:bg-bg-light sm:w-auto"
-            href="#contact">
-            {{ heroTexts().contact }}
-            <lucide-icon name="arrow-right" class="h-4 w-4" aria-hidden="true"></lucide-icon>
-          </a>
+        <!-- Left: Photo -->
+        <div class="w-full lg:w-[45%] flex-shrink-0">
+          <div class="relative mx-auto w-full max-w-sm lg:max-w-full aspect-[4/5] overflow-hidden rounded-[2.25rem] border border-border/40 bg-bg-light p-2 shadow-2xl">
+            <img
+              [src]="profileImageUrl"
+              alt="Icaro Justino"
+              class="h-full w-full rounded-[1.9rem] object-cover object-center"
+            />
+            <!-- Subtle gradient overlay at the bottom -->
+            <div class="absolute inset-x-2 bottom-2 h-24 rounded-b-[1.9rem] bg-gradient-to-t from-bg-dark/80 to-transparent pointer-events-none"></div>
+          </div>
         </div>
-      </div>
 
-      <div class="relative">
-        <div class="absolute -inset-3 rounded-[2.5rem] border border-border/40 bg-bg-light/30 blur-sm"></div>
-        <figure class="relative overflow-hidden rounded-[2.25rem] border border-border bg-bg-light p-2 shadow-2xl">
-          <img [src]="profileImageUrl" alt="Foto de perfil" class="aspect-4/5 w-full rounded-[1.9rem] object-cover" />
-        </figure>
+        <!-- Right: Content area -->
+        <div class="relative w-full lg:w-[55%] flex flex-col justify-center text-center lg:text-left">
+
+          <!-- Watermark text behind -->
+          <span
+            aria-hidden="true"
+            class="absolute -top-4 left-0 lg:-top-8 select-none text-[6rem] sm:text-[8rem] lg:text-[10rem] font-bold leading-none tracking-tighter text-text/[0.04] pointer-events-none"
+          >
+            {{ heroTexts().watermark }}
+          </span>
+
+          <!-- Title -->
+          <div class="relative z-10 mb-8 lg:mb-10">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight text-text">
+              {{ heroTexts().heroLine1 }}<br />
+              <span class="text-primary">{{ heroTexts().heroLine2 }}</span>
+            </h1>
+          </div>
+
+          <!-- Side label + Description row -->
+          <div class="relative z-10 flex items-start gap-6 mb-8 justify-center lg:justify-start">
+
+            <!-- Vertical label -->
+            <div class="hidden sm:flex flex-col items-center gap-3 pt-1 flex-shrink-0">
+              <span
+                class="text-[0.65rem] font-semibold tracking-[0.35em] text-text-muted uppercase"
+                style="writing-mode: vertical-lr;"
+              >
+                {{ heroTexts().sideLabel }}
+              </span>
+              <div class="w-px h-12 bg-border/60"></div>
+            </div>
+
+            <!-- Description paragraph -->
+            <p class="text-sm sm:text-base leading-relaxed text-text-muted max-w-xl">
+              {{ heroTexts().description }}
+            </p>
+          </div>
+
+          <!-- Social icons -->
+          <div class="relative z-10 flex items-center gap-3 mb-8 justify-center lg:justify-start">
+            <a
+              *ngFor="let link of socialLinks"
+              [href]="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="link.label"
+              class="flex h-9 w-9 items-center justify-center rounded-full border border-border/50 text-text-muted transition-all duration-300 hover:border-primary/60 hover:text-primary hover:bg-primary/10"
+            >
+              <lucide-icon [name]="link.icon" class="h-4 w-4"></lucide-icon>
+            </a>
+          </div>
+
+          <!-- Contact CTA button -->
+          <div class="relative z-10 flex justify-center lg:justify-start">
+            <button
+              id="hero-contact-btn"
+              type="button"
+              (click)="scrollToContact()"
+              class="inline-block cursor-pointer border border-text/30 bg-transparent px-7 py-3 text-xs font-bold uppercase tracking-[0.2em] text-text transition-all duration-300 hover:border-primary hover:text-primary hover:bg-primary/5"
+            >
+              {{ heroTexts().contactBtn }}
+            </button>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
